@@ -1,26 +1,27 @@
-# Zeyr Turborepo
-> Zeyr is a descentralised Discord assistant made for every community who needs a limitless bot
+# Zeyr
 
-# Translations
-When a new command is added i usally make it's respective translations, if I don't I'll just make them later, but if you want to contribute you are welcome to do so!
+## 📚 Overview:
+Zeyr is a powerful and versatile Discord bot designed to enhance your server experience. With its advanced features and seamless integration, Zeyr is here to make your Discord community thrive! 💪
 
-The fallback language when no translation found is `en-US`
+## 🌟 Features:
+    - ✅ Smooth experience, Zeyr barely goes down or with high latency
+    - More entries soon...
 
-# KNOWN bugs/errors
-1. Error messages may be ephemeral or not
-2. Error messages are not readable for "non-dev" users
+## 🔧 Installation: SOON
 
-# Self-hosting
-Zeyr team does not support the idea of people self-hosting their own instance of Zeyr, we kindly ask you to use our self-hosted version.
+## 📖 Usage:
+    - 🔹 Add Zeyr to your server and it will setup by itself!
 
-# Older version
-If you want Zeyr's old code (not that old, still used) please refer to [brxem/zeyr](https://github.com/brxem/zeyr), eventually that repo wont be updated anymore, please stay up-to-date 🙏
+## 🤝 Contributing:
+    - 🔸 Fork the Zeyr repository and create a new branch for your contributions
+    - 🔸 Make your changes and submit a pull request for review
+    - 🔸 Help us improve Zeyr by reporting bugs and suggesting new features
 
-# Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b feat/<feature>`
-3. Commit your changes: `git commit -am 'feat(<app>): my feature'`
-4. Push to the branch: `git push origin feat/<feature>`
-5. Submit your pull request
+## ⭐ About Zeyr Prime
+Zeyr Prime is an one-time payment that will be always yours, if you don't want to pay and have the Prime features, since Prime was made because of high prices of hosting, you can always self-host your own instance of Zeyr!
 
-> I will upgrade this readme, maybe later, stay tuned.
+> Anyways by paying you help us to make Zeyr more reachable for everyone 💖
+
+## 🔗 Useful links:
+    - 🌐 [Website](https://zeyr.vercel.app)
+    - ⛑️ [Discord server](https://discord.gg)
