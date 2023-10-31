@@ -2,16 +2,15 @@
 	"name": "zeyr-turborepo",
 	"version": "0.0.0",
 	"private": true,
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	],
+	"workspaces": ["apps/*", "packages/*"],
 	"scripts": {
 		"build": "turbo run build",
 		"dev": "turbo run dev",
 		"postinstall": "husky install .github/husky && pnpm bot prisma:generate",
 		"bot": "pnpm --filter zeyr",
-		"update:i": "pnpm --recursive update -i"
+		"update:i": "pnpm --recursive update -i",
+		"format": "pnpm dlx @biomejs/biome format . --write",
+		"check": "pnpm dlx @biomejs/biome check --apply ."
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.3.3",

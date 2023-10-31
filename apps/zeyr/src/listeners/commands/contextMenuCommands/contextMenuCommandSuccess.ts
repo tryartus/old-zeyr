@@ -1,6 +1,10 @@
-import { Listener, LogLevel, type ContextMenuCommandSuccessPayload } from '@sapphire/framework';
-import type { Logger } from '@sapphire/plugin-logger';
-import { logSuccessCommand } from '../../../lib/utils';
+import {
+	type ContextMenuCommandSuccessPayload,
+	Listener,
+	LogLevel,
+} from "@sapphire/framework";
+import type { Logger } from "@sapphire/plugin-logger";
+import { logSuccessCommand } from "../../../lib/utils";
 
 export class UserListener extends Listener {
 	public override run(payload: ContextMenuCommandSuccessPayload) {
