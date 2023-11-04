@@ -2,9 +2,13 @@ import { FastifyPluginAsync } from "fastify";
 import { Image, decode } from "imagescript";
 import { ImageHeaders } from "../../lib/types";
 
-const invert: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-	fastify.post<{ Headers: ImageHeaders }>(
-		"/invert",
+export interface OpacityImageHeaders extends ImageHeaders {
+	image_opacity: number;
+}
+
+const opacity: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
+	fastify.post<{ Headers: OpacityImageHeaders }>(
+		"/opacity",
 		async function (request, reply) {
 			try {
 				const response = await fetch(request.headers.image_url);
@@ -18,7 +22,17 @@ const invert: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 					.catch(() => reply.badRequest("An invalid image was provided"));
 				const rawImage = (await decode(Buffer.from(buffer))) as Image;
 
-				rawImage.invert();
+				if (
+					!request.headers.image_opacity ||
+					request.headers.image_opacity < 0 ||
+					request.headers.image_opacity > 1
+				) {
+					reply.badRequest(
+						"Provided opacity value was incorrect. (Please make sure its between 0 and 1, you can use decimals)",
+					);
+				}
+
+				rawImage.opacity(request.headers.image_opacity);
 				rawImage.resize(rawImage.width - 50, rawImage.height - 50);
 
 				const result =
@@ -41,4 +55,4 @@ const invert: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 	);
 };
 
-export default invert;
+export default opacity;
