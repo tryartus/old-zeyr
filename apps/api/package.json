@@ -1,0 +1,38 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "zeyr api.",
+	"main": "app.ts",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "npm run build:ts && tsc -p test/tsconfig.json && tap --ts \"test/**/*.test.ts\"",
+		"start": "npm run build:ts && fastify start -l info dist/app.js",
+		"build:ts": "tsc",
+		"watch:ts": "tsc -w",
+		"dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
+		"dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@fastify/autoload": "^5.0.0",
+		"@fastify/sensible": "^5.0.0",
+		"@sapphire/utilities": "^3.13.0",
+		"fastify": "^4.0.0",
+		"fastify-cli": "^5.9.0",
+		"fastify-plugin": "^4.0.0",
+		"imagescript": "^1.2.16"
+	},
+	"devDependencies": {
+		"@types/node": "^20.4.4",
+		"@types/tap": "^15.0.5",
+		"concurrently": "^8.2.2",
+		"fastify-tsconfig": "^2.0.0",
+		"tap": "^16.1.0",
+		"ts-node": "^10.4.0",
+		"typescript": "^5.2.2"
+	}
+}

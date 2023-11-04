@@ -8,5 +8,5 @@ locations:
   interaction-handlers: interaction-handlers
   routes: routes
 customFileTemplates:
-  enabled: false
-  location: ""
+  enabled: true
+  location: "templates"

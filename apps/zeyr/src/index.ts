@@ -4,14 +4,14 @@ import "./lib/setup";
 
 const zeyr = new ZeyrClient();
 
-const main = async () => {
-	const login = await Result.fromAsync(
-		async () => await zeyr.start(process.env.DISCORD_TOKEN),
+async function init() {
+	const resultClient = await Result.fromAsync(
+		async () => await zeyr.start(process.env.DISCORD_DEVELOPMENT_TOKEN),
 	);
 
-	return login.unwrapOrElse(() => {
-		zeyr.panic();
+	return resultClient.unwrapOrElse((error) => {
+		return zeyr.panic(error);
 	});
-};
+}
 
-main();
+init();

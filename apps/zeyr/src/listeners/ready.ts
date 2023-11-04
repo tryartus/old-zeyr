@@ -1,50 +1,34 @@
 import { ApplyOptions } from "@sapphire/decorators";
 import { Listener, Piece, Store } from "@sapphire/framework";
-import {
-	blue,
-	gray,
-	green,
-	magenta,
-	magentaBright,
-	white,
-	yellow,
-} from "colorette";
-
-const dev = process.env.NODE_ENV !== "production";
+import { blueBright, greenBright } from "colorette";
+import { ActivityType } from "discord.js";
 
 @ApplyOptions<Listener.Options>({ once: true })
 export class UserEvent extends Listener {
-	private readonly style = dev ? yellow : blue;
+	private readonly style = greenBright;
 
 	public override run() {
 		this.printBanner();
 		this.printStoreDebugInformation();
+
+		this.container.logger.info(
+			greenBright("󰙯"),
+			"Connected to",
+			this.container.client.user?.username,
+		);
+
+		this.container.client.user?.setPresence({
+			activities: [
+				{
+					name: "your server 👁️",
+					type: ActivityType.Watching,
+				},
+			],
+		});
 	}
 
 	private printBanner() {
-		const success = green("+");
-
-		const llc = dev ? magentaBright : white;
-		const blc = dev ? magenta : blue;
-
-		const line01 = llc("");
-		const line02 = llc("");
-		const line03 = llc("");
-
-		// Offset Pad
-		const pad = " ".repeat(7);
-
-		console.log(
-			String.raw`
-${line01} ${pad}${blc("1.0.0")}
-${line02} ${pad}[${success}] Gateway
-${line03}${
-	dev
-		? ` ${pad}${blc("<")}${llc("/")}${blc(">")} ${llc("DEVELOPMENT MODE")}`
-		: ""
-}
-		`.trim(),
-		);
+		this.container.logger.debug("Welcome to Zeyr :)");
 	}
 
 	private printStoreDebugInformation() {
@@ -52,15 +36,11 @@ ${line03}${
 		const stores = [...client.stores.values()];
 		const last = stores.pop()!;
 
-		for (const store of stores) logger.info(this.styleStore(store, false));
-		logger.info(this.styleStore(last, true));
+		for (const store of stores) logger.info(this.styleStore(store));
+		logger.info(this.styleStore(last));
 	}
 
-	private styleStore(store: Store<Piece>, last: boolean) {
-		return gray(
-			`${last ? "└─" : "├─"} Loaded ${this.style(
-				store.size.toString().padEnd(3, " "),
-			)} ${store.name}.`,
-		);
+	private styleStore(store: Store<Piece>) {
+		return blueBright(`🎉 Loaded ${this.style(store.size)} ${store.name}.`);
 	}
 }

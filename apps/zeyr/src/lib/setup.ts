@@ -3,6 +3,7 @@ process.env.NODE_ENV ??= "development";
 
 import "@kaname-png/plugin-subcommands-advanced/register";
 import "@sapphire/plugin-logger/register";
+import "@sapphire/plugin-subcommands/register";
 
 import {
 	ApplicationCommandRegistries,
