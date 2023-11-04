@@ -4,6 +4,7 @@
 		"enabled": true
 	},
 	"linter": {
+		"ignore": ["dist", "node_modules"],
 		"enabled": true,
 		"rules": {
 			"recommended": true,
@@ -13,6 +14,7 @@
 		}
 	},
 	"formatter": {
+		"ignore": ["dist", "node_modules"],
 		"enabled": true
 	}
 }
