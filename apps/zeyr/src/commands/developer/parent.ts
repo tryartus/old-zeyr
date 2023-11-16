@@ -3,7 +3,7 @@ import { ApplyOptions } from "@sapphire/decorators";
 import { ApplicationCommandRegistry } from "@sapphire/framework";
 
 @ApplyOptions<Subcommand.Options>({
-	name: "common",
+	name: "developer",
 })
 export class ParentCommand extends Subcommand {
 	public override registerApplicationCommands(
@@ -15,7 +15,7 @@ export class ParentCommand extends Subcommand {
 
 			return ctx
 				.setName(this.name)
-				.setDescription("Subcommands for common commands");
+				.setDescription("Subcommands for developer commands");
 		});
 	}
 }
