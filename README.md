@@ -5,6 +5,9 @@ Zeyr is a powerful and versatile Discord bot designed to enhance your server exp
 
 ## 🌟 Features
 - ✅ Smooth experience, Zeyr barely goes down or with high latency
+- ✅ Tag scripting
+- ✅ Fully customizable
+- ✅ Online dashboard
 - More entries soon...
 
 ## 🔧 Installation: SOON

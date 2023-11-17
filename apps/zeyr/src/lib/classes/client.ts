@@ -1,6 +1,7 @@
 import { LogLevel, SapphireClient, container } from "@sapphire/framework";
 import { greenBright } from "colorette";
 import { type ClientOptions, GatewayIntentBits, Partials } from "discord.js";
+import { API } from "./api";
 
 const CLIENT_OPTIONS: ClientOptions = {
 	defaultPrefix: "!!",
@@ -27,6 +28,8 @@ const CLIENT_OPTIONS: ClientOptions = {
 export class ZeyrClient extends SapphireClient {
 	constructor() {
 		super(CLIENT_OPTIONS);
+
+		container.api = new API("http://127.0.0.1:3000");
 	}
 
 	public async start(token?: string) {

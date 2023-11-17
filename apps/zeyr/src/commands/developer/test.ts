@@ -4,7 +4,7 @@ import {
 } from "@kaname-png/plugin-subcommands-advanced";
 
 @RegisterSubCommand("developer", (builder) =>
-	builder.setName("test").setDescription("kys"),
+	builder.setName("test").setDescription("test purposes"),
 )
 export class UserCommand extends Command {
 	public override async chatInputRun(
