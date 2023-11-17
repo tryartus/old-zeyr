@@ -25,13 +25,25 @@ export class API {
 		);
 	}
 
-	public async invert(image: string) {
+	public async invert(image_url: string) {
 		return this._get<Buffer>(
 			"/image/invert",
 			FetchResultTypes.Buffer,
 			FetchMethods.Post,
 			{
-				image_url: image,
+				image_url,
+			},
+		);
+	}
+
+	public async opacity(image_url: string, image_opacity: string) {
+		return this._get<Buffer>(
+			"/image/opacity",
+			FetchResultTypes.Buffer,
+			FetchMethods.Post,
+			{
+				image_url,
+				image_opacity,
 			},
 		);
 	}

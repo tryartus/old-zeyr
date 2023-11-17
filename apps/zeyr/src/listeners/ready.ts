@@ -7,7 +7,7 @@ import { ActivityType } from "discord.js";
 export class UserEvent extends Listener {
 	private readonly style = greenBright;
 
-	public override run() {
+	public override async run() {
 		this.printBanner();
 		this.printStoreDebugInformation();
 
@@ -17,14 +17,22 @@ export class UserEvent extends Listener {
 			this.container.client.user?.username,
 		);
 
-		this.container.client.user?.setPresence({
-			activities: [
-				{
-					name: "your server 👁️",
-					type: ActivityType.Watching,
-				},
-			],
-		});
+		setInterval(
+			async () =>
+				await fetch("https://api.kanye.rest/")
+					.then((x) => x.json())
+					.then(({ quote }) =>
+						this.container.client.user?.setPresence({
+							activities: [
+								{
+									name: quote,
+									type: ActivityType.Custom,
+								},
+							],
+						}),
+					),
+			60000,
+		);
 	}
 
 	private printBanner() {
