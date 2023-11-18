@@ -18,8 +18,6 @@ const find: FastifyPluginAsync = async (fastify, _): Promise<void> => {
 			results: request.body.results ?? 10,
 		});
 
-		console.log(sauce);
-
 		return reply.send({
 			results: sauce,
 		});
