@@ -24,7 +24,8 @@
 		"fastify": "^4.0.0",
 		"fastify-cli": "^5.9.0",
 		"fastify-plugin": "^4.0.0",
-		"imagescript": "^1.2.16"
+		"imagescript": "^1.2.16",
+		"sagiri": "^3.4.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20.4.4",
