@@ -28,6 +28,10 @@ export class UserEvent extends Listener {
 									name: quote,
 									type: ActivityType.Custom,
 								},
+								{
+									name: "your data 🎅",
+									type: ActivityType.Watching,
+								},
 							],
 						}),
 					),

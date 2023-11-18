@@ -1,4 +1,5 @@
 import { API } from "./classes/api";
+import { Tags } from "./classes/tags";
 
 declare module "@skyra/env-utilities" {
 	interface Env {
@@ -10,6 +11,14 @@ declare module "@skyra/env-utilities" {
 declare module "@sapphire/pieces" {
 	interface Container {
 		api: API;
+		tags: Tags;
+		developers: string[];
+	}
+}
+
+declare module "@sapphire/framework" {
+	interface Preconditions {
+		Developer: never;
 	}
 }
 

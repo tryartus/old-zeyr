@@ -1,7 +1,15 @@
 import { LogLevel, SapphireClient, container } from "@sapphire/framework";
 import { greenBright } from "colorette";
 import { type ClientOptions, GatewayIntentBits, Partials } from "discord.js";
+import {
+	FiftyFiftyParser,
+	IfStatementParser,
+	RandomParser,
+	RangeParser,
+	SliceParser,
+} from "tagscript";
 import { API } from "./api";
+import { Tags } from "./tags";
 
 const CLIENT_OPTIONS: ClientOptions = {
 	defaultPrefix: "!!",
@@ -29,7 +37,15 @@ export class ZeyrClient extends SapphireClient {
 	constructor() {
 		super(CLIENT_OPTIONS);
 
+		container.developers = ["1076700780175831100"];
 		container.api = new API("http://127.0.0.1:3000");
+		container.tags = new Tags(
+			new SliceParser(),
+			new FiftyFiftyParser(),
+			new RandomParser(),
+			new IfStatementParser(),
+			new RangeParser(),
+		);
 	}
 
 	public async start(token?: string) {
