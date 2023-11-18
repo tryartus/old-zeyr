@@ -3,6 +3,7 @@ import {
 	FetchResultTypes,
 	fetch as sfetch,
 } from "@sapphire/fetch";
+import { SauceResult } from "../types/saucenao";
 
 export class API {
 	url: string;
@@ -12,6 +13,19 @@ export class API {
 		}
 
 		this.url = url;
+	}
+
+	public async sauce(image: string, results?: number | null) {
+		return this._get<SauceResult>(
+			"/sauce/find",
+			FetchResultTypes.JSON,
+			FetchMethods.Post,
+			{},
+			JSON.stringify({
+				image_url: image,
+				results,
+			}),
+		);
 	}
 
 	public async speechballoon(image: string) {
@@ -53,12 +67,14 @@ export class API {
 		resultType: FetchResultTypes,
 		method?: FetchMethods,
 		headers?: HeadersInit,
+		body?: BodyInit,
 	) {
 		const _data = await sfetch<T>(
 			this.url + endpoint,
 			{
 				method,
 				headers,
+				body,
 			},
 			resultType,
 		);
