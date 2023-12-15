@@ -1,9 +1,9 @@
 import { ZeyrClient } from "#lib/client";
 import { ZeyrContext } from "#lib/options";
-import "#lib/setup"
+import "#lib/setup";
 
 const client = new ZeyrClient({
-    context: ZeyrContext
+	context: ZeyrContext,
 });
 
 void client.run();

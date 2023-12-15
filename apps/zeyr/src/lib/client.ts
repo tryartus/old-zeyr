@@ -9,4 +9,3 @@ export class ZeyrClient extends PotoClient {
 		return true;
 	}
 }
-
