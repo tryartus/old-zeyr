@@ -9,7 +9,7 @@ interface SauceBody {
 }
 
 const find: FastifyPluginAsync = async (fastify, _): Promise<void> => {
-	fastify.post<{ Body: string }>("/find", async function (request, reply) {
+	fastify.post<{ Body: string }>("/find", async (request, reply) => {
 		const body = JSON.parse(request.body) as SauceBody;
 		if (!body.image_url) {
 			return reply.badRequest("invalid image url provided");

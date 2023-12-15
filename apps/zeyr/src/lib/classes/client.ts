@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import { LogLevel, SapphireClient, container } from "@sapphire/framework";
 import { greenBright } from "colorette";
 import { type ClientOptions, GatewayIntentBits, Partials } from "discord.js";
@@ -37,6 +38,7 @@ export class ZeyrClient extends SapphireClient {
 	constructor() {
 		super(CLIENT_OPTIONS);
 
+		container.prisma = new PrismaClient();
 		container.developers = ["1076700780175831100"];
 		container.api = new API("http://127.0.0.1:3000");
 		container.tags = new Tags(
@@ -51,6 +53,8 @@ export class ZeyrClient extends SapphireClient {
 	public async start(token?: string) {
 		container.logger.info(greenBright(""), "Connecting to Discord");
 		await super.login(token);
+		await container.prisma.$connect();
+		container.logger.info(greenBright(""), "Prisma is online now");
 	}
 
 	public async panic(error?: unknown) {
@@ -58,6 +62,8 @@ export class ZeyrClient extends SapphireClient {
 		container.logger.fatal(greenBright(""), "An error occurred, aborting...");
 		await super.destroy();
 		container.logger.fatal(greenBright(""), "Aborted.");
+		await container.prisma.$disconnect();
+		container.logger.fatal(greenBright(""), "Turning prisma OFF");
 		process.exit(1);
 	}
 }

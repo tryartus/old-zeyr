@@ -3,8 +3,7 @@ import { ApplyOptions } from "@sapphire/decorators";
 import { ApplicationCommandRegistry } from "@sapphire/framework";
 
 @ApplyOptions<Subcommand.Options>({
-	name: "image",
-	preconditions: ["Prime"],
+	name: "tags",
 })
 export class ParentCommand extends Subcommand {
 	public override registerApplicationCommands(
@@ -16,7 +15,7 @@ export class ParentCommand extends Subcommand {
 
 			return ctx
 				.setName(this.name)
-				.setDescription("Subcommands for image commands");
+				.setDescription("Subcommands for tags commands");
 		});
 	}
 }

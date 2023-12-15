@@ -10,6 +10,8 @@ export class UserCommand extends Command {
 	public override async chatInputRun(
 		interaction: Command.ChatInputInteraction<"cached">,
 	) {
-		return interaction.reply("uwu");
+		const _t = this.container.client.emit("guildMemberAdd", interaction.member);
+		if (_t) return interaction.reply("ok");
+		else return interaction.reply("no");
 	}
 }

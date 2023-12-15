@@ -9,7 +9,7 @@ export interface OpacityImageHeaders extends ImageHeaders {
 const opacity: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 	fastify.post<{ Headers: OpacityImageHeaders }>(
 		"/opacity",
-		async function (request, reply) {
+		async (request, reply) => {
 			try {
 				const response = await fetch(request.headers.image_url);
 				if (!response.ok) {

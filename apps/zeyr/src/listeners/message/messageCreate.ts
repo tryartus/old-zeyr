@@ -1,7 +1,7 @@
 import { ApplyOptions } from "@sapphire/decorators";
 import { Events, Listener } from "@sapphire/framework";
 import { Collection, Message, TextChannel } from "discord.js";
-import { lastImageCache } from "../../../lib/util/discord";
+import { lastImageCache } from "../../lib/util/discord";
 
 @ApplyOptions<Listener.Options>({})
 export class UserEvent extends Listener<typeof Events.MessageCreate> {

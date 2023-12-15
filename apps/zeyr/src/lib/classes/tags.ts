@@ -1,4 +1,4 @@
-import { type IParser, Interpreter } from "tagscript";
+import { type IParser, Interpreter, StringTransformer } from "tagscript";
 
 export class Tags {
 	interpreter: Interpreter;
@@ -6,7 +6,9 @@ export class Tags {
 		this.interpreter = new Interpreter(...parsers);
 	}
 
-	public async format(content: string) {
-		return await this.interpreter.run(content);
+	public async format(content: string, args: string) {
+		return await this.interpreter.run(content, {
+			args: new StringTransformer(args),
+		});
 	}
 }

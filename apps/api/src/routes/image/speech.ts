@@ -9,7 +9,7 @@ export interface SpeechImageHeaders extends ImageHeaders {
 const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 	fastify.post<{ Headers: SpeechImageHeaders }>(
 		"/speech-balloon",
-		async function (request, reply) {
+		async (request, reply) => {
 			try {
 				const response = await fetch(request.headers.image_url);
 				if (!response.ok) {

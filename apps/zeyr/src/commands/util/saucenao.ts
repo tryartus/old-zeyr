@@ -6,34 +6,6 @@ import { PaginatedMessage } from "@sapphire/discord.js-utilities";
 import { Colors, EmbedBuilder } from "discord.js";
 import { getLastImage } from "../../lib/util/discord";
 
-export interface InvidiousVideo {
-	type: string;
-	title: string;
-	videoId: string;
-	author: string;
-	authorId: string;
-	authorUrl: string;
-	authorVerified: boolean;
-	videoThumbnails: InvidiousVideoThumbnail[];
-	description: string;
-	descriptionHtml: string;
-	viewCount: number;
-	viewCountText: string;
-	published: number;
-	publishedText: string;
-	lengthSeconds: number;
-	liveNow: boolean;
-	premium: boolean;
-	isUpcoming: boolean;
-}
-
-export interface InvidiousVideoThumbnail {
-	quality: string;
-	url: string;
-	width: number;
-	height: number;
-}
-
 @RegisterSubCommand("util", (builder) =>
 	builder
 		.setName("saucenao")
