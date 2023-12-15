@@ -22,19 +22,18 @@ export class UserCommand extends Command {
 
 		if (user?.primeStatus) {
 			return interaction.reply("this user already has prime status");
-		} else {
-			await this.container.prisma.user.update({
-				where: {
-					id: uid,
-				},
-				data: {
-					primeStatus: true,
-				},
-			});
-
-			return interaction.reply(
-				`successfully given ${userMention(uid)} the prime status`,
-			);
 		}
+		await this.container.prisma.user.update({
+			where: {
+				id: uid,
+			},
+			data: {
+				primeStatus: true,
+			},
+		});
+
+		return interaction.reply(
+			`successfully given ${userMention(uid)} the prime status`,
+		);
 	}
 }

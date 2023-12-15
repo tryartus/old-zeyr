@@ -13,9 +13,8 @@ export class UserPrecondition extends Precondition {
 	private checkHierarchy(interaction: ChatInputCommandInteraction) {
 		if (this.container.developers.includes(interaction.user.id))
 			return this.ok();
-		else
-			return this.error({
-				message: "you are not allowed to run this command",
-			});
+		return this.error({
+			message: "you are not allowed to run this command",
+		});
 	}
 }

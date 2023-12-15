@@ -50,9 +50,8 @@ export class UserCommand extends Command {
 			return interaction.reply({
 				content: `\`\`\`xl\n${execute.message}\`\`\``,
 			});
-		else
-			return interaction.reply({
-				content: `\`\`\`${language}\n${execute.run.output}\`\`\``,
-			});
+		return interaction.reply({
+			content: `\`\`\`${language}\n${execute.run.output}\`\`\``,
+		});
 	}
 }

@@ -12,6 +12,6 @@ export class UserCommand extends Command {
 	) {
 		const _t = this.container.client.emit("guildMemberAdd", interaction.member);
 		if (_t) return interaction.reply("ok");
-		else return interaction.reply("no");
+		return interaction.reply("no");
 	}
 }

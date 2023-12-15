@@ -14,10 +14,9 @@ export class UserPrecondition extends Precondition {
 		const user = await this.container.utilities.db.getUser(interaction.user.id);
 
 		if (user?.primeStatus) return this.ok();
-		else
-			return this.error({
-				message:
-					"you need prime status to run this command, consider supporting zeyr by upgrading your account!",
-			});
+		return this.error({
+			message:
+				"you need prime status to run this command, consider supporting zeyr by upgrading your account!",
+		});
 	}
 }
