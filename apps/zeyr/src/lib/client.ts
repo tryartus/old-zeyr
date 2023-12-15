@@ -1,12 +1,11 @@
-import { PotoClient } from '@potoland/core';
+import { PotoClient } from "@potoland/core";
 
 export class ZeyrClient extends PotoClient {
-  public async run(): Promise<boolean> {
-    await this.start();
-    await this.execute();
-    await this.uploadCommands();
+	public async run(): Promise<boolean> {
+		await this.start();
+		await this.execute();
+		await this.uploadCommands();
 
-    return true;
-  }
+		return true;
+	}
 }
-

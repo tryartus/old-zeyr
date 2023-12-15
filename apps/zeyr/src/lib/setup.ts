@@ -1,3 +1,3 @@
-import { setup } from '@skyra/env-utilities';
+import { setup } from "@skyra/env-utilities";
 
-setup()
+setup();
