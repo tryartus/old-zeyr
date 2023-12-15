@@ -104,9 +104,12 @@ importers:
 
   apps/zeyr:
     dependencies:
+      '@biscuitland/common':
+        specifier: ^0.0.9
+        version: 0.0.9
       '@potoland/core':
         specifier: github:potoland/potocuit#master
-        version: github.com/potoland/potocuit/a997c6d25d3cdd8ee8261d970902aea4b16903f0
+        version: github.com/potoland/potocuit/5deb3c6c8ce381e2f099bc4596c9499b9bf9947c
       '@skyra/env-utilities':
         specifier: ^1.2.2
         version: 1.2.2
@@ -606,11 +609,11 @@ packages:
       '@discordjs/collection': 1.5.3
       '@discordjs/util': 0.3.1
       '@sapphire/async-queue': 1.5.1
-      '@sapphire/snowflake': 3.5.1
+      '@sapphire/snowflake': 3.5.2
       discord-api-types: 0.37.66
       file-type: 18.7.0
       tslib: 2.6.2
-      undici: 5.27.2
+      undici: 5.28.2
     dev: false
 
   /@discordjs/util@0.3.1:
@@ -750,8 +753,8 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/snowflake@3.5.1:
-    resolution: {integrity: sha512-BxcYGzgEsdlG0dKAyOm0ehLGm2CafIrfQTZGWgkfKYbj+pNNsorZ7EotuZukc2MT70E0UbppVbtpBrqpzVzjNA==}
+  /@sapphire/snowflake@3.5.2:
+    resolution: {integrity: sha512-FTm9RdyELF21PQN5dS/HLRs90XqWclHa+p0gkonc+BA2X2QKfFySHSjUbO65rmArd/ghR9Ahj2fMfedTZEqzOw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
@@ -2399,10 +2402,6 @@ packages:
     hasBin: true
     dev: true
 
-  /module-alias@2.2.3:
-    resolution: {integrity: sha512-23g5BFj4zdQL/b6tor7Ji+QY4pEfNH784BMslY9Qb0UnJWRAt+lQGLYmRaM0KDBwIG23ffEBELhZDP2rhi9f/Q==}
-    dev: false
-
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
@@ -3534,8 +3533,8 @@ packages:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
 
-  /undici@5.27.2:
-    resolution: {integrity: sha512-iS857PdOEy/y3wlM3yRp+6SNQQ6xU0mmZcwRSriqk+et/cwWAtwmIGf6WkoDN2EK/AMdCO/dfXzIwi+rFMrjjQ==}
+  /undici@5.28.2:
+    resolution: {integrity: sha512-wh1pHJHnUeQV5Xa8/kyQhO7WFa8M34l026L5P/+2TYiakvGy5Rdc8jWZVyG7ieht/0WgJLEd3kcU5gKx+6GC8w==}
     engines: {node: '>=14.0'}
     dependencies:
       '@fastify/busboy': 2.1.0
@@ -3731,8 +3730,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/potoland/potocuit/a997c6d25d3cdd8ee8261d970902aea4b16903f0:
-    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/a997c6d25d3cdd8ee8261d970902aea4b16903f0}
+  github.com/potoland/potocuit/5deb3c6c8ce381e2f099bc4596c9499b9bf9947c:
+    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/5deb3c6c8ce381e2f099bc4596c9499b9bf9947c}
     name: '@potoland/core'
     version: 0.0.1
     requiresBuild: true
@@ -3742,7 +3741,6 @@ packages:
       '@biscuitland/rest': 3.0.7
       form-data: 4.0.0
       ioredis: 5.3.2
-      module-alias: 2.2.3
       ts-mixer: 6.0.3
       ws: 8.15.1
     optionalDependencies:

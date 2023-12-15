@@ -1,9 +1,6 @@
 {
 	"compilerOptions": {
-		"lib": [
-			"ESNext",
-			"WebWorker"
-		],
+		"lib": ["ESNext", "WebWorker"],
 		"target": "ES2021",
 		"module": "CommonJS",
 		"moduleResolution": "node",
@@ -41,10 +38,6 @@
 		"resolveJsonModule": true,
 		"allowJs": true
 	},
-	"include": [
-		"src"
-  ],
-	"exclude": [
-		"node_modules"
-	]
+	"include": ["src", "types.d.ts"],
+	"exclude": ["node_modules"]
 }

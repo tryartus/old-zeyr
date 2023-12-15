@@ -12,6 +12,7 @@
 	"author": "simxnet",
 	"license": "ISC",
 	"dependencies": {
+		"@biscuitland/common": "^0.0.9",
 		"@potoland/core": "github:potoland/potocuit#master",
 		"@skyra/env-utilities": "^1.2.2",
 		"discord-api-types": "^0.37.66",
