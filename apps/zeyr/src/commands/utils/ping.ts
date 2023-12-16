@@ -5,10 +5,10 @@ import { CommandContext, Declare, SubCommand } from "@potoland/core";
 	description: "Gets the bot latency between discord and the.",
 })
 export default class PingCommand extends SubCommand {
-	override async run(ctx: CommandContext<true, {}>) {
+	async run(ctx: CommandContext<true, {}>) {
 		await ctx.interaction.deferReply();
 		return ctx.editResponse({
-			content: `Pong! \`${await this.getLatency(ctx)}ms\`.`,
+			content: `Pong! \`${await this.getLatency(ctx)}ms\``,
 		});
 	}
 

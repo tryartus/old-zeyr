@@ -26,7 +26,7 @@ export class ZeyrAPI {
 		};
 	}
 
-	public async opacity(image_url: string, image_opacity: number) {
+	public async opacity(image_url: string, image_opacity: string) {
 		const data = await this.post("/image/opacity", {
 			image_url,
 			image_opacity,
@@ -38,14 +38,9 @@ export class ZeyrAPI {
 		};
 	}
 
-	private async post(
-		endpoint: string,
-		headers: Record<string, string | number>,
-	) {
+	private async post(endpoint: string, headers: HeadersInit) {
 		return fetch(this.baseURL + endpoint, {
-			headers: {
-				...headers,
-			} as HeadersInit,
+			headers,
 			method: "POST",
 		});
 	}

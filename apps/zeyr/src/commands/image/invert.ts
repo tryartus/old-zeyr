@@ -1,4 +1,10 @@
-import { Declare, Options, SubCommand } from "@potoland/core";
+import {
+	Declare,
+	OnOptionsReturnObject,
+	Options,
+	SubCommand,
+} from "@potoland/core";
+import { objectEntries } from "@sapphire/utilities";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 @Declare({
@@ -7,7 +13,7 @@ import { ZeyrContext, imageOptions } from "#lib/options";
 })
 @Options(imageOptions)
 export default class InvertCommand extends SubCommand {
-	override async run(ctx: ZeyrContext<typeof imageOptions>) {
+	async run(ctx: ZeyrContext<typeof imageOptions>) {
 		const { data, time } = await ctx.api.invert(ctx.options.url);
 
 		ctx.editOrReply(
@@ -21,5 +27,14 @@ export default class InvertCommand extends SubCommand {
 				},
 			],
 		);
+	}
+
+	override onOptionsError(context: ZeyrContext, error: OnOptionsReturnObject) {
+		context.editOrReply({
+			content: objectEntries(error)
+				.filter(([_, b]) => b.failed === true)
+				.map(([_, err]) => err.value)
+				.join("\n"),
+		});
 	}
 }

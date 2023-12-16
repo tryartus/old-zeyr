@@ -16,13 +16,15 @@ export class ZeyrContext<
 	api = new ZeyrAPI("http://127.0.0.1:3000");
 }
 
+const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg))/i;
+
 export const imageOptions = {
 	url: createOption({
 		description: "image url",
 		required: true,
 		type: ApplicationCommandOptionType.String,
 		value(value: string, ok: OKFunction<string>, fail: FailFunction) {
-			if (!value.startsWith("https://") || !value.endsWith(".png"))
+			if (!imageRegex.test(value))
 				fail(Error("you must enter a valid image url"));
 			ok(value);
 		},

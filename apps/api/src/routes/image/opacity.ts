@@ -12,6 +12,7 @@ const opacity: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 		async (request, reply) => {
 			try {
 				const response = await fetch(request.headers.image_url);
+				const opacity = Number(request.headers.image_opacity);
 				if (!response.ok) {
 					reply.badRequest("Failed to fetch the image");
 					return;
@@ -22,17 +23,13 @@ const opacity: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 					.catch(() => reply.badRequest("An invalid image was provided"));
 				const rawImage = (await decode(Buffer.from(buffer))) as Image;
 
-				if (
-					!request.headers.image_opacity ||
-					request.headers.image_opacity < 0 ||
-					request.headers.image_opacity > 1
-				) {
+				if (!opacity || opacity < 0 || opacity > 1) {
 					reply.badRequest(
 						"Provided opacity value was incorrect. (Please make sure its between 0 and 1, you can use decimals)",
 					);
 				}
 
-				rawImage.opacity(request.headers.image_opacity);
+				rawImage.opacity(opacity);
 				rawImage.resize(rawImage.width - 50, rawImage.height - 50);
 
 				const result =

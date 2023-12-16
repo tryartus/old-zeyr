@@ -110,6 +110,9 @@ importers:
       '@potoland/core':
         specifier: github:potoland/potocuit#master
         version: github.com/potoland/potocuit/5deb3c6c8ce381e2f099bc4596c9499b9bf9947c
+      '@sapphire/utilities':
+        specifier: ^3.13.0
+        version: 3.13.0
       '@skyra/env-utilities':
         specifier: ^1.2.2
         version: 1.2.2
