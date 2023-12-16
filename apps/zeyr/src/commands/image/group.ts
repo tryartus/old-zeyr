@@ -3,7 +3,7 @@ import {
 	Declare,
 	Middlewares,
 	OnOptionsReturnObject,
-	Options
+	Options,
 } from "@potoland/core";
 import { objectEntries } from "@sapphire/utilities";
 import ratelimit from "#lib/middlewares/ratelimit";
@@ -22,7 +22,7 @@ export default class ImageGroup extends Command {
 	override onMiddlewaresError(context: ZeyrContext, error: Error) {
 		console.log("middleware", error);
 		context.editOrReply({
-			content: error.message
+			content: error.message,
 		});
 	}
 

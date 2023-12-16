@@ -1,5 +1,5 @@
-import { Time } from '@sapphire/time-utilities';
-import { roundNumber } from '@sapphire/utilities';
+import { Time } from "@sapphire/time-utilities";
+import { roundNumber } from "@sapphire/utilities";
 
 /**
  * Converts a number of seconds to milliseconds.
@@ -7,7 +7,7 @@ import { roundNumber } from '@sapphire/utilities';
  * @returns The amount of milliseconds `seconds` equals to.
  */
 export function seconds(seconds: number): number {
-    return seconds * Time.Second;
+	return seconds * Time.Second;
 }
 
 /**
@@ -16,7 +16,7 @@ export function seconds(seconds: number): number {
  * @returns The amount of seconds `milliseconds` equals to.
  */
 seconds.fromMilliseconds = (milliseconds: number): number => {
-    return roundNumber(milliseconds / Time.Second);
+	return roundNumber(milliseconds / Time.Second);
 };
 
 /**
@@ -25,7 +25,7 @@ seconds.fromMilliseconds = (milliseconds: number): number => {
  * @returns The amount of seconds `minutes` equals to.
  */
 seconds.fromMinutes = (minutes: number): number => {
-    return minutes * 60;
+	return minutes * 60;
 };
 
 /**
@@ -34,7 +34,7 @@ seconds.fromMinutes = (minutes: number): number => {
  * @returns The amount of seconds `hours` equals to.
  */
 seconds.fromHours = (hours: number): number => {
-    return hours * 60 * 60;
+	return hours * 60 * 60;
 };
 
 /**
@@ -43,7 +43,7 @@ seconds.fromHours = (hours: number): number => {
  * @returns The amount of seconds `days` equals to.
  */
 seconds.fromDays = (days: number): number => {
-    return days * 60 * 60 * 24;
+	return days * 60 * 60 * 24;
 };
 
 /**
@@ -52,7 +52,7 @@ seconds.fromDays = (days: number): number => {
  * @returns The amount of milliseconds `minutes` equals to.
  */
 export function minutes(minutes: number): number {
-    return minutes * Time.Minute;
+	return minutes * Time.Minute;
 }
 
 /**
@@ -61,7 +61,7 @@ export function minutes(minutes: number): number {
  * @returns The amount of seconds `value` equals to.
  */
 minutes.toSeconds = (value: number): number => {
-    return roundNumber(minutes(value) / Time.Second);
+	return roundNumber(minutes(value) / Time.Second);
 };
 
 /**
@@ -70,7 +70,7 @@ minutes.toSeconds = (value: number): number => {
  * @returns The amount of milliseconds `hours` equals to.
  */
 export function hours(hours: number): number {
-    return hours * Time.Hour;
+	return hours * Time.Hour;
 }
 
 /**
@@ -79,7 +79,7 @@ export function hours(hours: number): number {
  * @returns The amount of milliseconds `days` equals to.
  */
 export function days(days: number): number {
-    return days * Time.Day;
+	return days * Time.Day;
 }
 
 /**
@@ -88,7 +88,7 @@ export function days(days: number): number {
  * @returns The amount of milliseconds `months` equals to.
  */
 export function months(months: number): number {
-    return months * Time.Month;
+	return months * Time.Month;
 }
 
 /**
@@ -97,5 +97,5 @@ export function months(months: number): number {
  * @returns The amount of milliseconds `years` equals to.
  */
 export function years(years: number): number {
-    return years * Time.Year;
+	return years * Time.Year;
 }
