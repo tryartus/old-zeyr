@@ -24,7 +24,7 @@ const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 				const rawBalloon = await (
 					await fetch(
 						request.headers.custom_balloon ??
-						"https://i.redd.it/z0nqjst12ih61.jpg",
+							"https://i.redd.it/z0nqjst12ih61.jpg",
 					)
 				).arrayBuffer();
 
@@ -45,8 +45,8 @@ const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 				const result = await speech.encode();
 
 				setHeaders(reply, request, {
-					"X-Output-Size": `${speech.width}x${speech.height}`
-				})
+					"X-Output-Size": `${speech.width}x${speech.height}`,
+				});
 
 				reply.send(result);
 			} catch (error) {

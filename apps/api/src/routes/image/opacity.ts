@@ -39,8 +39,8 @@ const opacity: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 						: await rawImage.encode();
 
 				setHeaders(reply, request, {
-					"X-Output-Size": `${rawImage.width}x${rawImage.height}`
-				})
+					"X-Output-Size": `${rawImage.width}x${rawImage.height}`,
+				});
 
 				reply.send(result);
 			} catch (error) {

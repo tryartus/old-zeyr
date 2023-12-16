@@ -1,4 +1,9 @@
-import { Command, Declare, OnOptionsReturnObject, Options } from "@potoland/core";
+import {
+	Command,
+	Declare,
+	OnOptionsReturnObject,
+	Options,
+} from "@potoland/core";
 import { objectEntries } from "@sapphire/utilities";
 import { ZeyrContext } from "#lib/options";
 import InvertCommand from "./invert";

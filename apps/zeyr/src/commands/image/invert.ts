@@ -1,8 +1,4 @@
-import {
-	Declare,
-	Options,
-	SubCommand,
-} from "@potoland/core";
+import { Declare, Options, SubCommand } from "@potoland/core";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 @Declare({
