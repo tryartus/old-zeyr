@@ -5,4 +5,4 @@ import { Command, Declare, DynamicOptions } from "@potoland/core";
 	description: "Util commands",
 })
 @DynamicOptions()
-export default class UtilsGroup extends Command { }
+export default class UtilsGroup extends Command {}
