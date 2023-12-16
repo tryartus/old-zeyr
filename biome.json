@@ -13,6 +13,9 @@
 			},
 			"complexity": {
 				"noBannedTypes": "off"
+			},
+			"suspicious": {
+				"noConfusingVoidType": "off"
 			}
 		}
 	},

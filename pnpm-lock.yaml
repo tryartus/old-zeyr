@@ -110,6 +110,12 @@ importers:
       '@potoland/core':
         specifier: github:potoland/potocuit#master
         version: github.com/potoland/potocuit/5deb3c6c8ce381e2f099bc4596c9499b9bf9947c
+      '@sapphire/ratelimits':
+        specifier: ^2.4.8
+        version: 2.4.8
+      '@sapphire/time-utilities':
+        specifier: ^1.7.11
+        version: 1.7.11
       '@sapphire/utilities':
         specifier: ^3.13.0
         version: 3.13.0
@@ -756,8 +762,45 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
+  /@sapphire/cron@1.1.2:
+    resolution: {integrity: sha512-Yyo4dL/5Fqfvt//exNNZVnnYovS05iharOO+IdZyYwkU+Gyltb/al/rttbAH4cctXfcpW4aDlMJ7PFDxgtUCaA==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dependencies:
+      '@sapphire/utilities': 3.14.0
+    dev: false
+
+  /@sapphire/duration@1.1.1:
+    resolution: {integrity: sha512-c6+ZvVEmZ82+G5aZOz8QbTLNY1nN0j/fxykFNULnmoc2WspFO7PbXUDZMeHQoanWbFRC83U2DszhF2Zl5BwjrA==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/ratelimits@2.4.8:
+    resolution: {integrity: sha512-9v9GBl+6w1ur6pnr25yklTE5phBjVb8vuXWid8SMeFo0znC/bc7GSIFXRBLwZ/jaRtpJfk4xG4zewqa9bbepNw==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
   /@sapphire/snowflake@3.5.2:
     resolution: {integrity: sha512-FTm9RdyELF21PQN5dS/HLRs90XqWclHa+p0gkonc+BA2X2QKfFySHSjUbO65rmArd/ghR9Ahj2fMfedTZEqzOw==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/time-utilities@1.7.11:
+    resolution: {integrity: sha512-xvEs4wVQeddE5hl4nz4CUXpX8K4fNyYiatSVGTY3KWybqOIWD+JtdFqa/+7ER+fPoDuF6Ro6vDYddVb6dcBapQ==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dependencies:
+      '@sapphire/cron': 1.1.2
+      '@sapphire/duration': 1.1.1
+      '@sapphire/timer-manager': 1.0.1
+      '@sapphire/timestamp': 1.0.2
+    dev: false
+
+  /@sapphire/timer-manager@1.0.1:
+    resolution: {integrity: sha512-axX9vuQI6e2gCcUZ/3yCbo415O8p61DZ7bHL6VloVySk6U3O3HzONnl0CGEcczwqKGZ4Ujga0Qj4izdulgu2SA==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/timestamp@1.0.2:
+    resolution: {integrity: sha512-Jn5armLFr3Z9u9CTF9h9qWFy0rFKA4UlalRPSAF9KL0xbXTSTLEJyZrRoTtQwLGcuXdSaaLc/u9Ywy4oW2eTEw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
@@ -772,6 +815,11 @@ packages:
   /@sapphire/utilities@3.13.0:
     resolution: {integrity: sha512-BD5ycPjZX5dXxrAb90dJTY8ukpPVBXgU17gA5ghK2memS4hwAzFYpvK+R+6zh4d6HYIKVuqrVhGXjvZenAa/Aw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/utilities@3.14.0:
+    resolution: {integrity: sha512-eYlpYlaKLvxTNjD3ymxpsf4MaSHW3x6vf+DMsLdMsV235J7i66VboHb8uxNcogR/lJ7khmMhMTCtabqUhNX4bA==}
+    engines: {node: '>=v14.0.0'}
     dev: false
 
   /@skyra/env-utilities@1.2.2:

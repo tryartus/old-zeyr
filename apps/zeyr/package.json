@@ -14,6 +14,8 @@
 	"dependencies": {
 		"@biscuitland/common": "^0.0.9",
 		"@potoland/core": "github:potoland/potocuit#master",
+		"@sapphire/ratelimits": "^2.4.8",
+		"@sapphire/time-utilities": "^1.7.11",
 		"@sapphire/utilities": "^3.13.0",
 		"@skyra/env-utilities": "^1.2.2",
 		"discord-api-types": "^0.37.66",

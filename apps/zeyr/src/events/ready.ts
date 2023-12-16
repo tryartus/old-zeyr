@@ -5,5 +5,7 @@ export default createEvent({
 		name: "ready",
 		once: true,
 	},
-	run: (user, client) => client.logger.info(`${user.username} is ready!`),
+	run: (_, client) => {
+		client.logger.debug("Zeyr is ready")
+	}
 });
