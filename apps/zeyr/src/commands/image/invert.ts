@@ -16,7 +16,7 @@ export default class InvertCommand extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageOptions>) {
 		const { data, time } = await ctx.api.invert(ctx.options.url);
 
-		ctx.editOrReply(
+		await ctx.editOrReply(
 			{
 				content: `took ${time}ms`,
 			},
@@ -27,6 +27,13 @@ export default class InvertCommand extends SubCommand {
 				},
 			],
 		);
+	}
+
+	override onRunError(context: ZeyrContext, error: unknown) {
+		console.log(error);
+		context.editOrReply({
+			content: "an unknown error has occurred",
+		});
 	}
 
 	override onOptionsError(context: ZeyrContext, error: OnOptionsReturnObject) {

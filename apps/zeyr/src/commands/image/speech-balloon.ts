@@ -29,6 +29,13 @@ export default class SpeechCommand extends SubCommand {
 		);
 	}
 
+	override onRunError(context: ZeyrContext, error: unknown) {
+		console.log(error);
+		context.editOrReply({
+			content: "an unknown error has occurred",
+		});
+	}
+
 	override onOptionsError(context: ZeyrContext, error: OnOptionsReturnObject) {
 		context.editOrReply({
 			content: objectEntries(error)
