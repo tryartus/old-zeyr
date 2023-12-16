@@ -1,6 +1,7 @@
 import { FastifyPluginAsync } from "fastify";
 import { Image, decode } from "imagescript";
 import { ImageHeaders } from "../../lib/types";
+import { setHeaders } from "../../lib/utils";
 
 export interface OpacityImageHeaders extends ImageHeaders {
 	image_opacity: number;
@@ -37,12 +38,9 @@ const opacity: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 						? await rawImage.encodeJPEG(request.headers.quality ?? 70)
 						: await rawImage.encode();
 
-				reply.headers({
-					"Content-Type": `image/${request.headers.response_type ?? "png"}`,
-					"X-Response-Time": Math.round(reply.getResponseTime()).toString(),
-					"X-Output-Size": `${rawImage.width}x${rawImage.height}`,
-					"X-Output-Quality": request.headers.quality ?? 70,
-				});
+				setHeaders(reply, request, {
+					"X-Output-Size": `${rawImage.width}x${rawImage.height}`
+				})
 
 				reply.send(result);
 			} catch (error) {

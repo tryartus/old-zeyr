@@ -3,12 +3,10 @@ import {
 	Declare,
 	FailFunction,
 	OKFunction,
-	OnOptionsReturnObject,
 	Options,
 	SubCommand,
 	createOption,
 } from "@potoland/core";
-import { objectEntries } from "@sapphire/utilities";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 export const imageOpacityOptions = {
@@ -48,21 +46,5 @@ export default class OpacityCommand extends SubCommand {
 				},
 			],
 		);
-	}
-
-	override onRunError(context: ZeyrContext, error: unknown) {
-		console.log(error);
-		context.editOrReply({
-			content: "an unknown error has occurred",
-		});
-	}
-
-	override onOptionsError(context: ZeyrContext, error: OnOptionsReturnObject) {
-		context.editOrReply({
-			content: objectEntries(error)
-				.filter(([_, b]) => b.failed === true)
-				.map(([_, err]) => err.value)
-				.join("\n"),
-		});
 	}
 }

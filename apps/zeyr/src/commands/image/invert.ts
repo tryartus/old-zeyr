@@ -1,10 +1,8 @@
 import {
 	Declare,
-	OnOptionsReturnObject,
 	Options,
 	SubCommand,
 } from "@potoland/core";
-import { objectEntries } from "@sapphire/utilities";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 @Declare({
@@ -27,21 +25,5 @@ export default class InvertCommand extends SubCommand {
 				},
 			],
 		);
-	}
-
-	override onRunError(context: ZeyrContext, error: unknown) {
-		console.log(error);
-		context.editOrReply({
-			content: "an unknown error has occurred",
-		});
-	}
-
-	override onOptionsError(context: ZeyrContext, error: OnOptionsReturnObject) {
-		context.editOrReply({
-			content: objectEntries(error)
-				.filter(([_, b]) => b.failed === true)
-				.map(([_, err]) => err.value)
-				.join("\n"),
-		});
 	}
 }
