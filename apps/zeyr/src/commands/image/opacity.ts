@@ -1,9 +1,9 @@
 import { ApplicationCommandOptionType } from "@biscuitland/common";
 import {
 	Declare,
-	FailFunction,
 	OKFunction,
 	Options,
+	StopFunction,
 	SubCommand,
 	createOption,
 } from "@potoland/core";
@@ -15,9 +15,9 @@ export const imageOpacityOptions = {
 		description: "image opacity",
 		required: true,
 		type: ApplicationCommandOptionType.Number,
-		value(value: number, ok: OKFunction<number>, fail: FailFunction) {
+		value(value: number, ok: OKFunction<number>, stop: StopFunction) {
 			if (value > 1 || value < 0)
-				fail(Error("opacity value should be between 1 and 0"));
+				stop(Error("opacity value should be between 1 and 0"));
 			ok(value);
 		},
 	}),

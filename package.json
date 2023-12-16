@@ -22,7 +22,6 @@
 		"@types/ws": "^8.5.4",
 		"colorette": "^2.0.20",
 		"husky": "^8.0.3",
-		"prisma": "^4.16.2",
 		"tsc-watch": "^6.0.0",
 		"turbo": "latest",
 		"typescript": "^5.0.4"
@@ -34,8 +33,5 @@
 		"ansi-regex": "^5.0.1",
 		"minimist": "^1.2.8"
 	},
-	"packageManager": "pnpm@7.28.0",
-	"dependencies": {
-		"@prisma/client": "^4.13.0"
-	}
+	"packageManager": "pnpm@7.28.0"
 }

@@ -1,9 +1,8 @@
-import { Command, Declare, Options } from "@potoland/core";
-import PingCommand from "./ping";
+import { Command, Declare, DynamicOptions } from "@potoland/core";
 
 @Declare({
 	name: "utils",
 	description: "Util commands",
 })
-@Options([PingCommand])
-export default class UtilsGroup extends Command {}
+@DynamicOptions()
+export default class UtilsGroup extends Command { }

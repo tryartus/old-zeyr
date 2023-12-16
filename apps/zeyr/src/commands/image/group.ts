@@ -1,22 +1,19 @@
 import {
 	Command,
 	Declare,
+	DynamicOptions,
 	Middlewares,
 	OnOptionsReturnObject,
-	Options,
 } from "@potoland/core";
 import { objectEntries } from "@sapphire/utilities";
 import ratelimit from "#lib/middlewares/ratelimit";
 import { ZeyrContext } from "#lib/options";
-import InvertCommand from "./invert";
-import OpacityCommand from "./opacity";
-import SpeechCommand from "./speech-balloon";
 
 @Declare({
 	name: "image",
 	description: "Image commands",
 })
-@Options([InvertCommand, OpacityCommand, SpeechCommand])
+@DynamicOptions()
 @Middlewares([ratelimit])
 export default class ImageGroup extends Command {
 	override onMiddlewaresError(context: ZeyrContext, error: Error) {
