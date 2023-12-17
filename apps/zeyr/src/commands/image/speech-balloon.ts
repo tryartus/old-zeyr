@@ -2,13 +2,13 @@ import { Declare, Options, SubCommand } from "@potoland/core";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 @Declare({
-	name: "invert",
-	description: "inverts an image colors",
+	name: "speech-balloon",
+	description: "make fun of someone lol",
 })
 @Options(imageOptions)
-export default class InvertCommand extends SubCommand {
+export default class SpeechCommand extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageOptions>) {
-		const { data, time } = await ctx.api.invert(ctx.options.url);
+		const { data, time } = await ctx.api.speechBalloon(ctx.options.url);
 
 		await ctx.editOrReply(
 			{

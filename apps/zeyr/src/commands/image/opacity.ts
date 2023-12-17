@@ -1,46 +1,50 @@
+import { ApplicationCommandOptionType } from "@biscuitland/common";
 import {
-	Command,
-	RegisterSubCommand,
-} from "@kaname-png/plugin-subcommands-advanced";
-import { AttachmentBuilder } from "discord.js";
-import { getLastImage } from "../../lib/util/discord";
+	Declare,
+	OKFunction,
+	Options,
+	StopFunction,
+	SubCommand,
+	createOption,
+} from "@potoland/core";
+import { ZeyrContext, imageOptions } from "#lib/options";
 
-@RegisterSubCommand("image", (builder) =>
-	builder
-		.setName("opacity")
-		.setDescription("plays with an image's transparency")
-		.addNumberOption((option) =>
-			option
-				.setName("opacity")
-				.setDescription("Opacity level")
-				.setMaxValue(1)
-				.setMinValue(0)
-				.setRequired(true),
-		)
-		.addAttachmentOption((option) =>
-			option.setName("image").setDescription("Image").setRequired(false),
-		),
-)
-export class UserCommand extends Command {
-	public override async chatInputRun(
-		interaction: Command.ChatInputInteraction<"cached">,
-	) {
-		await interaction.deferReply({ fetchReply: true });
-		const image =
-			interaction.options.getAttachment("image", false)?.proxyURL ??
-			(await getLastImage(interaction.channel!));
-		const opacity = interaction.options.getNumber("opacity", true);
+export const imageOpacityOptions = {
+	...imageOptions,
+	opacity: createOption({
+		description: "image opacity",
+		required: true,
+		type: ApplicationCommandOptionType.Number,
+		value(value: number, ok: OKFunction<number>, stop: StopFunction) {
+			if (value > 1 || value < 0)
+				stop(Error("opacity value should be between 1 and 0"));
+			ok(value);
+		},
+	}),
+};
 
-		if (!image)
-			return interaction.editReply({
-				content: "you did not provide a valid image",
-			});
+@Declare({
+	name: "opacity",
+	description: "changes an image opacity",
+})
+@Options(imageOpacityOptions)
+export default class OpacityCommand extends SubCommand {
+	async run(ctx: ZeyrContext<typeof imageOpacityOptions>) {
+		const { data, time } = await ctx.api.opacity(
+			ctx.options.url,
+			ctx.options.opacity.toString(),
+		);
 
-		const result = await this.container.api.opacity(image, opacity.toString());
-
-		return interaction.editReply({
-			content: "done",
-			files: [new AttachmentBuilder(result)],
-		});
+		await ctx.editOrReply(
+			{
+				content: `took ${time}ms`,
+			},
+			[
+				{
+					data: Buffer.from(data),
+					name: "result.png",
+				},
+			],
+		);
 	}
 }

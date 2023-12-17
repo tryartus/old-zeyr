@@ -1,6 +1,7 @@
 import { FastifyPluginAsync } from "fastify";
 import { Image, decode } from "imagescript";
 import { ImageHeaders } from "../../lib/types";
+import { setHeaders } from "../../lib/utils";
 
 const invert: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 	fastify.post<{ Headers: ImageHeaders }>("/invert", async (request, reply) => {
@@ -24,11 +25,8 @@ const invert: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 					? await rawImage.encodeJPEG(request.headers.quality ?? 70)
 					: await rawImage.encode();
 
-			reply.headers({
-				"Content-Type": `image/${request.headers.response_type ?? "png"}`,
-				"X-Response-Time": Math.round(reply.getResponseTime()).toString(),
+			setHeaders(reply, request, {
 				"X-Output-Size": `${rawImage.width}x${rawImage.height}`,
-				"X-Output-Quality": request.headers.quality ?? 70,
 			});
 
 			reply.send(result);

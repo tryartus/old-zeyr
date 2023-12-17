@@ -1,17 +1,9 @@
-import { Result } from "@sapphire/framework";
-import { ZeyrClient } from "./lib/classes/client";
-import "./lib/setup";
+import { ZeyrClient } from "#lib/client";
+import { ZeyrContext } from "#lib/options";
+import "#lib/setup";
 
-const zeyr = new ZeyrClient();
+const client = new ZeyrClient({
+	context: ZeyrContext,
+});
 
-async function init() {
-	const resultClient = await Result.fromAsync(
-		async () => await zeyr.start(process.env.DISCORD_DEVELOPMENT_TOKEN),
-	);
-
-	return resultClient.unwrapOrElse((error) => {
-		return zeyr.panic(error);
-	});
-}
-
-init();
+void client.run();

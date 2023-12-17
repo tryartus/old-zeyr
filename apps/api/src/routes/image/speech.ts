@@ -1,6 +1,7 @@
 import { FastifyPluginAsync } from "fastify";
 import { Image, decode } from "imagescript";
 import { ImageHeaders } from "../../lib/types";
+import { setHeaders } from "../../lib/utils";
 
 export interface SpeechImageHeaders extends ImageHeaders {
 	custom_balloon?: string;
@@ -43,11 +44,8 @@ const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 
 				const result = await speech.encode();
 
-				reply.headers({
-					"Content-Type": "image/png",
-					"X-Response-Time": Math.round(reply.getResponseTime()).toString(),
+				setHeaders(reply, request, {
 					"X-Output-Size": `${speech.width}x${speech.height}`,
-					"X-Output-Quality": request.headers.quality ?? 70,
 				});
 
 				reply.send(result);

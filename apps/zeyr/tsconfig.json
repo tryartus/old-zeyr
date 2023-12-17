@@ -1,13 +1,43 @@
 {
-	"extends": [
-		"@sapphire/ts-config",
-		"@sapphire/ts-config/extra-strict",
-		"@sapphire/ts-config/decorators"
-	],
 	"compilerOptions": {
-		"rootDir": "src",
-		"outDir": "dist",
-		"tsBuildInfoFile": "dist/.tsbuildinfo"
+		"lib": ["ESNext", "WebWorker"],
+		"target": "ES2021",
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"strict": true,
+		"sourceMap": false,
+		"declaration": false,
+		/* Paths */
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"baseUrl": "./src",
+		"paths": {
+			"#lib/*": ["lib/*"],
+			"#root/*": ["*"]
+		},
+		/* The "No" Corner */
+		"noImplicitAny": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		/* Strict */
+		"strictBindCallApply": true,
+		"strictFunctionTypes": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"useUnknownInCatchVariables": true,
+		/* Other settings */
+		"esModuleInterop": true,
+		"exactOptionalPropertyTypes": true,
+		"experimentalDecorators": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"allowJs": true
 	},
-	"include": ["src", "Arguments.d.ts"]
+	"include": ["src", "types.d.ts"],
+	"exclude": ["node_modules"]
 }

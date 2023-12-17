@@ -10,6 +10,12 @@
 			"recommended": true,
 			"style": {
 				"noNonNullAssertion": "off"
+			},
+			"complexity": {
+				"noBannedTypes": "off"
+			},
+			"suspicious": {
+				"noConfusingVoidType": "off"
 			}
 		}
 	},
