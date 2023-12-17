@@ -41,7 +41,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://simxnet.envs.net"><img src="https://avatars.githubusercontent.com/u/95551108?v=4?s=100" width="100px;" alt="Simonet"/><br /><sub><b>Simonet</b></sub></a><br /><a href="#infra-simxnet" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/zeyrbot/zeyr/commits?author=simxnet" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://simxnet.envs.net"><img src="https://avatars.githubusercontent.com/u/95551108?v=4?s=100" width="100px;" alt="Simonet"/><br /><sub><b>Simonet</b></sub></a><br /><a href="#infra-simxnet" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/zeyrbot/zeyr/commits?author=simxnet" title="Code">💻</a> <a href="#maintenance-simxnet" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
