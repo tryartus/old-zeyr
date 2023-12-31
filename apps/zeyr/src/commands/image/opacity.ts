@@ -7,6 +7,7 @@ import {
 	SubCommand,
 	createOption,
 } from "@potoland/core";
+import { returnBufferResponse } from "#lib/common/util";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 export const imageOpacityOptions = {
@@ -15,7 +16,7 @@ export const imageOpacityOptions = {
 		description: "image opacity",
 		required: true,
 		type: ApplicationCommandOptionType.Number,
-		value(value: number, ok: OKFunction<number>, stop: StopFunction) {
+		value({ value }, ok: OKFunction<number>, stop: StopFunction) {
 			if (value > 1 || value < 0)
 				stop(Error("opacity value should be between 1 and 0"));
 			ok(value);
@@ -28,23 +29,13 @@ export const imageOpacityOptions = {
 	description: "changes an image opacity",
 })
 @Options(imageOpacityOptions)
-export default class OpacityCommand extends SubCommand {
+export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageOpacityOptions>) {
 		const { data, time } = await ctx.api.opacity(
 			ctx.options.url,
 			ctx.options.opacity.toString(),
 		);
 
-		await ctx.editOrReply(
-			{
-				content: `took ${time}ms`,
-			},
-			[
-				{
-					data: Buffer.from(data),
-					name: "result.png",
-				},
-			],
-		);
+		return await returnBufferResponse(ctx, time, data)
 	}
 }

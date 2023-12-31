@@ -1,37 +1,26 @@
 import { FastifyPluginAsync } from "fastify";
-import { Image, decode } from "imagescript";
-import { ImageHeaders } from "../../lib/types";
-import { setHeaders } from "../../lib/utils";
+import { Image } from "imagescript";
+import { ImageBody } from "../../lib/types";
+import { loadSource, setHeaders } from "../../lib/utils";
 
-const invert: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-	fastify.post<{ Headers: ImageHeaders }>("/invert", async (request, reply) => {
+const invert: FastifyPluginAsync = async (fastify): Promise<void> => {
+	fastify.post<{ Body: ImageBody }>("/invert", async (request, reply) => {
 		try {
-			const response = await fetch(request.headers.image_url);
-			if (!response.ok) {
-				reply.badRequest("Failed to fetch the image");
-				return;
-			}
+			const image = await loadSource<Image>(request.body.image_url).catch(() => reply.badRequest("invalid buffer provided"))
 
-			const buffer = await response
-				.arrayBuffer()
-				.catch(() => reply.badRequest("An invalid image was provided"));
-			const rawImage = (await decode(Buffer.from(buffer))) as Image;
+			image.invert();
 
-			rawImage.invert();
-			rawImage.resize(rawImage.width - 50, rawImage.height - 50);
-
-			const result =
-				request.headers.response_type === "jpeg"
-					? await rawImage.encodeJPEG(request.headers.quality ?? 70)
-					: await rawImage.encode();
+			const result = await image.encode();
 
 			setHeaders(reply, request, {
-				"X-Output-Size": `${rawImage.width}x${rawImage.height}`,
+				"X-Output-Width": image.width,
+				"X-Output-Height": image.height,
 			});
 
 			reply.send(result);
 		} catch (error) {
-			reply.code(500).send("Internal Server Error");
+			console.log(error)
+			reply.internalServerError("internal server error")
 		}
 	});
 };

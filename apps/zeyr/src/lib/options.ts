@@ -1,20 +1,25 @@
 import { ApplicationCommandOptionType } from "@biscuitland/common";
 import {
 	CommandContext,
-	FailFunction,
 	MiddlewareContext,
 	OKFunction,
 	OptionsRecord,
+	StopFunction,
 	createOption,
+	extendContext
 } from "@potoland/core";
 import { ZeyrAPI } from "./api";
 
-export class ZeyrContext<
-	T extends OptionsRecord = {},
+export const ZeyrContext = extendContext(() => {
+	return { api: new ZeyrAPI("http://127.0.0.1:3000") }
+})
+
+export type ZeyrContext<
+	O extends OptionsRecord = {},
 	M extends readonly MiddlewareContext[] = [],
-> extends CommandContext<true, T, M> {
-	api = new ZeyrAPI("http://127.0.0.1:3000");
-}
+> = CommandContext<'client', O, M> & {
+	api: ZeyrAPI
+};
 
 const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg))/i;
 
@@ -23,10 +28,10 @@ export const imageOptions = {
 		description: "image url",
 		required: true,
 		type: ApplicationCommandOptionType.String,
-		value(value: string, ok: OKFunction<string>, fail: FailFunction) {
+		value({ value }, ok: OKFunction<string>, stop: StopFunction) {
 			if (!imageRegex.test(value))
-				fail(Error("you must enter a valid image url"));
+				stop(Error("you must enter a valid image url"));
 			ok(value);
-		},
+		}
 	}),
 };

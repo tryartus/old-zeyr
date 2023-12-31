@@ -1,5 +1,7 @@
-export interface ImageHeaders {
+export interface ImageBody {
 	image_url: string;
-	response_type?: "png" | "jpeg";
-	quality?: number;
+}
+
+export interface ImageBodyOptions extends ImageBody {
+	value: number
 }

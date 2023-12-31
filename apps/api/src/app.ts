@@ -4,9 +4,11 @@ import { FastifyPluginAsync, FastifyServerOptions } from "fastify";
 
 export interface AppOptions
 	extends FastifyServerOptions,
-		Partial<AutoloadPluginOptions> {}
+	Partial<AutoloadPluginOptions> { }
 
-const options: AppOptions = {};
+const options: AppOptions = {
+
+};
 
 const app: FastifyPluginAsync<AppOptions> = async (
 	fastify,
@@ -28,7 +30,6 @@ const app: FastifyPluginAsync<AppOptions> = async (
 	// define your routes in one of these
 	void fastify.register(AutoLoad, {
 		dir: join(__dirname, "routes"),
-		prefix: "/v0",
 		options: opts,
 	});
 };

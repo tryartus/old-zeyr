@@ -1,4 +1,5 @@
 import { Declare, Options, SubCommand } from "@potoland/core";
+import { returnBufferResponse } from "#lib/common/util";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 @Declare({
@@ -6,20 +7,10 @@ import { ZeyrContext, imageOptions } from "#lib/options";
 	description: "inverts an image colors",
 })
 @Options(imageOptions)
-export default class InvertCommand extends SubCommand {
+export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageOptions>) {
 		const { data, time } = await ctx.api.invert(ctx.options.url);
 
-		await ctx.editOrReply(
-			{
-				content: `took ${time}ms`,
-			},
-			[
-				{
-					data: Buffer.from(data),
-					name: "result.png",
-				},
-			],
-		);
+		return await returnBufferResponse(ctx, time, data)
 	}
 }

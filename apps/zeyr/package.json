@@ -6,13 +6,15 @@
 	"scripts": {
 		"start": "node .",
 		"build": "tsc",
-		"dev": "pnpm run build && pnpm run start"
+		"dev": "pnpm run build && pnpm run start",
+		"poto": "pnpm uninstall @potoland/core && pnpm add @potoland/core@github:potoland/potocuit#master"
 	},
 	"keywords": [],
 	"author": "simxnet",
 	"license": "ISC",
 	"dependencies": {
 		"@biscuitland/common": "^0.0.9",
+		"@biscuitland/helpers": "^3.0.14",
 		"@potoland/core": "github:potoland/potocuit#master",
 		"@sapphire/ratelimits": "^2.4.8",
 		"@sapphire/time-utilities": "^1.7.11",

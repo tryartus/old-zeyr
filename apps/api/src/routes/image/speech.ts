@@ -1,39 +1,21 @@
 import { FastifyPluginAsync } from "fastify";
-import { Image, decode } from "imagescript";
-import { ImageHeaders } from "../../lib/types";
-import { setHeaders } from "../../lib/utils";
+import { Image } from "imagescript";
+import { ImageBody } from "../../lib/types";
+import { loadSource, setHeaders } from "../../lib/utils";
 
-export interface SpeechImageHeaders extends ImageHeaders {
+export interface SpeechImageBody extends ImageBody {
 	custom_balloon?: string;
 }
 
 const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-	fastify.post<{ Headers: SpeechImageHeaders }>(
+	fastify.post<{ Body: SpeechImageBody }>(
 		"/speech-balloon",
 		async (request, reply) => {
 			try {
-				const response = await fetch(request.headers.image_url);
-				if (!response.ok) {
-					reply.badRequest("Failed to fetch the image");
-					return;
-				}
+				const speech = await loadSource<Image>(request.body.image_url).catch(() => reply.badRequest("invalid buffer provided"))
+				const balloon = await loadSource<Image>(request.body.custom_balloon ??
+					"https://i.redd.it/z0nqjst12ih61.jpg").catch(() => reply.badRequest("invalid buffer provided"))
 
-				const rawSpeech = await response
-					.arrayBuffer()
-					.catch(() => reply.badRequest("An invalid image was provided"));
-				const rawBalloon = await (
-					await fetch(
-						request.headers.custom_balloon ??
-							"https://i.redd.it/z0nqjst12ih61.jpg",
-					)
-				).arrayBuffer();
-
-				const [balloon, speech] = (await Promise.all([
-					decode(rawBalloon as Buffer),
-					decode(rawSpeech as Buffer),
-				])) as Image[];
-
-				//operations below
 				speech.fit(speech.width, speech.height + (balloon.height - 100) * 2);
 				speech.composite(
 					balloon.resize(speech.width, balloon.height - 100),
@@ -45,12 +27,14 @@ const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 				const result = await speech.encode();
 
 				setHeaders(reply, request, {
-					"X-Output-Size": `${speech.width}x${speech.height}`,
+					"X-Output-Width": speech.width,
+					"X-Output-Height": speech.height,
 				});
 
 				reply.send(result);
 			} catch (error) {
-				reply.code(500).send("Internal Server Error");
+				console.log(error)
+				reply.internalServerError("internal server error")
 			}
 		},
 	);
