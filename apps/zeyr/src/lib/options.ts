@@ -21,7 +21,7 @@ export type ZeyrContext<
 	api: ZeyrAPI;
 };
 
-const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg))/i;
+const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg|webp|avif))/i;
 
 export const imageOptions = {
 	url: createOption({
