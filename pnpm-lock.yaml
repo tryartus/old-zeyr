@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 overrides:
   ansi-regex: ^5.0.1
   minimist: ^1.2.8
@@ -41,7 +37,7 @@ importers:
         version: 6.0.4(typescript@5.2.2)
       turbo:
         specifier: latest
-        version: 1.10.16
+        version: 1.11.2
       typescript:
         specifier: ^5.0.4
         version: 5.2.2
@@ -54,6 +50,9 @@ importers:
       '@fastify/sensible':
         specifier: ^5.0.0
         version: 5.5.0
+      '@img/sharp-linux-arm64':
+        specifier: ^0.33.1
+        version: 0.33.1
       '@sapphire/utilities':
         specifier: ^3.13.0
         version: 3.13.0
@@ -69,6 +68,9 @@ importers:
       imagescript:
         specifier: ^1.2.16
         version: 1.2.16
+      optional:
+        specifier: ^0.1.4
+        version: 0.1.4
       raw-body:
         specifier: ^2.5.2
         version: 2.5.2
@@ -111,7 +113,7 @@ importers:
         version: 3.0.14
       '@potoland/core':
         specifier: github:potoland/potocuit#master
-        version: github.com/potoland/potocuit/7e0a0e9f452d9bd4dbba5beca673b964e283dec6
+        version: github.com/potoland/potocuit/0b44ac36a4dd91257db6ba889cdeb1f491df17ea
       '@sapphire/ratelimits':
         specifier: ^2.4.8
         version: 2.4.8
@@ -762,7 +764,6 @@ packages:
     optionalDependencies:
       '@img/sharp-libvips-linux-arm64': 1.0.0
     dev: false
-    optional: true
 
   /@img/sharp-linux-arm@0.33.1:
     resolution: {integrity: sha512-Ii4X1vnzzI4j0+cucsrYA5ctrzU9ciXERfJR633S2r39CiD8npqH2GMj63uFZRCFt3E687IenAdbwIpQOJ5BNA==}
@@ -2737,6 +2738,10 @@ packages:
     hasBin: true
     dev: true
 
+  /optional@0.1.4:
+    resolution: {integrity: sha512-gtvrrCfkE08wKcgXaVwQVgwEQ8vel2dc5DDBn9RLQZ3YtmtkBss6A2HY6BnJH4N/4Ku97Ri/SF8sNWE2225WJw==}
+    dev: false
+
   /own-or-env@1.0.2:
     resolution: {integrity: sha512-NQ7v0fliWtK7Lkb+WdFqe6ky9XAzYmlkXthQrBbzlYbmFKoAYbDDcwmOm6q8kOuwSRXW8bdL5ORksploUJmWgw==}
     dependencies:
@@ -3665,64 +3670,64 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /turbo-darwin-64@1.10.16:
-    resolution: {integrity: sha512-+Jk91FNcp9e9NCLYlvDDlp2HwEDp14F9N42IoW3dmHI5ZkGSXzalbhVcrx3DOox3QfiNUHxzWg4d7CnVNCuuMg==}
+  /turbo-darwin-64@1.11.2:
+    resolution: {integrity: sha512-toFmRG/adriZY3hOps7nYCfqHAS+Ci6xqgX3fbo82kkLpC6OBzcXnleSwuPqjHVAaRNhVoB83L5njcE9Qwi2og==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64@1.10.16:
-    resolution: {integrity: sha512-jqGpFZipIivkRp/i+jnL8npX0VssE6IAVNKtu573LXtssZdV/S+fRGYA16tI46xJGxSAivrZ/IcgZrV6Jk80bw==}
+  /turbo-darwin-arm64@1.11.2:
+    resolution: {integrity: sha512-FCsEDZ8BUSFYEOSC3rrARQrj7x2VOrmVcfrMUIhexTxproRh4QyMxLfr6LALk4ymx6jbDCxWa6Szal8ckldFbA==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64@1.10.16:
-    resolution: {integrity: sha512-PpqEZHwLoizQ6sTUvmImcRmACyRk9EWLXGlqceogPZsJ1jTRK3sfcF9fC2W56zkSIzuLEP07k5kl+ZxJd8JMcg==}
+  /turbo-linux-64@1.11.2:
+    resolution: {integrity: sha512-Vzda/o/QyEske5CxLf0wcu7UUS+7zB90GgHZV4tyN+WZtoouTvbwuvZ3V6b5Wgd3OJ/JwWR0CXDK7Sf4VEMr7A==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64@1.10.16:
-    resolution: {integrity: sha512-TMjFYz8to1QE0fKVXCIvG/4giyfnmqcQIwjdNfJvKjBxn22PpbjeuFuQ5kNXshUTRaTJihFbuuCcb5OYFNx4uw==}
+  /turbo-linux-arm64@1.11.2:
+    resolution: {integrity: sha512-bRLwovQRz0yxDZrM4tQEAYV0fBHEaTzUF0JZ8RG1UmZt/CqtpnUrJpYb1VK8hj1z46z9YehARpYCwQ2K0qU4yw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64@1.10.16:
-    resolution: {integrity: sha512-+jsf68krs0N66FfC4/zZvioUap/Tq3sPFumnMV+EBo8jFdqs4yehd6+MxIwYTjSQLIcpH8KoNMB0gQYhJRLZzw==}
+  /turbo-windows-64@1.11.2:
+    resolution: {integrity: sha512-LgTWqkHAKgyVuLYcEPxZVGPInTjjeCnN5KQMdJ4uQZ+xMDROvMFS2rM93iQl4ieDJgidwHCxxCxaU9u8c3d/Kg==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64@1.10.16:
-    resolution: {integrity: sha512-sKm3hcMM1bl0B3PLG4ifidicOGfoJmOEacM5JtgBkYM48ncMHjkHfFY7HrJHZHUnXM4l05RQTpLFoOl/uIo2HQ==}
+  /turbo-windows-arm64@1.11.2:
+    resolution: {integrity: sha512-829aVBU7IX0c/B4G7g1VI8KniAGutHhIupkYMgF6xPkYVev2G3MYe6DMS/vsLt9GGM9ulDtdWxWrH5P2ngK8IQ==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo@1.10.16:
-    resolution: {integrity: sha512-2CEaK4FIuSZiP83iFa9GqMTQhroW2QryckVqUydmg4tx78baftTOS0O+oDAhvo9r9Nit4xUEtC1RAHoqs6ZEtg==}
+  /turbo@1.11.2:
+    resolution: {integrity: sha512-jPC7LVQJzebs5gWf8FmEvsvXGNyKbN+O9qpvv98xpNaM59aS0/Irhd0H0KbcqnXfsz7ETlzOC3R+xFWthC4Z8A==}
     hasBin: true
     optionalDependencies:
-      turbo-darwin-64: 1.10.16
-      turbo-darwin-arm64: 1.10.16
-      turbo-linux-64: 1.10.16
-      turbo-linux-arm64: 1.10.16
-      turbo-windows-64: 1.10.16
-      turbo-windows-arm64: 1.10.16
+      turbo-darwin-64: 1.11.2
+      turbo-darwin-arm64: 1.11.2
+      turbo-linux-64: 1.11.2
+      turbo-linux-arm64: 1.11.2
+      turbo-windows-64: 1.11.2
+      turbo-windows-arm64: 1.11.2
     dev: true
 
   /tweetnacl@1.0.3:
@@ -3978,10 +3983,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/potoland/potocuit/7e0a0e9f452d9bd4dbba5beca673b964e283dec6:
-    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/7e0a0e9f452d9bd4dbba5beca673b964e283dec6}
+  github.com/potoland/potocuit/0b44ac36a4dd91257db6ba889cdeb1f491df17ea:
+    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/0b44ac36a4dd91257db6ba889cdeb1f491df17ea}
     name: '@potoland/core'
     version: 0.0.1
+    prepare: true
     requiresBuild: true
     dependencies:
       '@sapphire/async-queue': 1.5.1
@@ -4008,3 +4014,7 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
