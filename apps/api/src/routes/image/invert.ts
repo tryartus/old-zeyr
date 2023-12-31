@@ -6,7 +6,9 @@ import { loadSource, setHeaders } from "../../lib/utils";
 const invert: FastifyPluginAsync = async (fastify): Promise<void> => {
 	fastify.post<{ Body: ImageBody }>("/invert", async (request, reply) => {
 		try {
-			const image = await loadSource<Image>(request.body.image_url).catch(() => reply.badRequest("invalid buffer provided"))
+			const image = await loadSource<Image>(request.body.image_url).catch(() =>
+				reply.badRequest("invalid buffer provided"),
+			);
 
 			image.invert();
 
@@ -19,8 +21,8 @@ const invert: FastifyPluginAsync = async (fastify): Promise<void> => {
 
 			reply.send(result);
 		} catch (error) {
-			console.log(error)
-			reply.internalServerError("internal server error")
+			console.log(error);
+			reply.internalServerError("internal server error");
 		}
 	});
 };

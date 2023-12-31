@@ -4,11 +4,9 @@ import { FastifyPluginAsync, FastifyServerOptions } from "fastify";
 
 export interface AppOptions
 	extends FastifyServerOptions,
-	Partial<AutoloadPluginOptions> { }
+		Partial<AutoloadPluginOptions> {}
 
-const options: AppOptions = {
-
-};
+const options: AppOptions = {};
 
 const app: FastifyPluginAsync<AppOptions> = async (
 	fastify,

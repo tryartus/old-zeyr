@@ -3,5 +3,5 @@ export interface ImageBody {
 }
 
 export interface ImageBodyOptions extends ImageBody {
-	value: number
+	value: number;
 }

@@ -20,10 +20,9 @@ export async function decode(input: Buffer) {
 }
 
 export async function loadSource<T>(url: string): Promise<T> {
-	const buffer = await (await fetch(url))
-		.arrayBuffer();
+	const buffer = await (await fetch(url)).arrayBuffer();
 
-	return await decode(Buffer.from(buffer)) as T
+	return (await decode(Buffer.from(buffer))) as T;
 }
 
 export async function loadFont(url: string) {

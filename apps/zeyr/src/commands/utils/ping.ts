@@ -11,7 +11,9 @@ export default class Command extends SubCommand {
 		const apiPing = await this.getAPILatency(ctx);
 
 		return ctx.editResponse({
-			content: `🌏 Discord latency: ${await this.getDiscordLatency(ctx)}ms${apiPing !== 0 ? `\n📡 Zeyr API latency: ${apiPing}ms` : ""}`,
+			content: `🌏 Discord latency: ${await this.getDiscordLatency(ctx)}ms${
+				apiPing !== 0 ? `\n📡 Zeyr API latency: ${apiPing}ms` : ""
+			}`,
 		});
 	}
 
@@ -25,7 +27,7 @@ export default class Command extends SubCommand {
 
 	private async getAPILatency(ctx: ZeyrContext): Promise<number | boolean> {
 		const start = Date.now();
-		const online = await ctx.api.ping().catch(() => 0)
+		const online = await ctx.api.ping().catch(() => 0);
 		const end = Date.now();
 
 		return online ? end - start : 0;

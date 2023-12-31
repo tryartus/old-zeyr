@@ -36,6 +36,6 @@ export default class Command extends SubCommand {
 			ctx.options.opacity.toString(),
 		);
 
-		return await returnBufferResponse(ctx, time, data)
+		return await returnBufferResponse(ctx, time, data);
 	}
 }

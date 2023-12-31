@@ -5,4 +5,4 @@ import { AutoLoad, Command, Declare } from "@potoland/core";
 	description: "Util commands",
 })
 @AutoLoad()
-export default class Group extends Command { }
+export default class Group extends Command {}

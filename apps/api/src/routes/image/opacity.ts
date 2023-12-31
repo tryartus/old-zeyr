@@ -10,7 +10,9 @@ const opacity: FastifyPluginAsync = async (fastify): Promise<void> => {
 			try {
 				const opacity = Number(request.body.value);
 
-				const image = await loadSource<Image>(request.body.image_url).catch(() => reply.badRequest("invalid buffer provided"))
+				const image = await loadSource<Image>(request.body.image_url).catch(
+					() => reply.badRequest("invalid buffer provided"),
+				);
 
 				if (!opacity || opacity < 0 || opacity > 1) {
 					reply.badRequest(
@@ -30,8 +32,8 @@ const opacity: FastifyPluginAsync = async (fastify): Promise<void> => {
 
 				reply.send(result);
 			} catch (error) {
-				console.log(error)
-				reply.internalServerError("internal server error")
+				console.log(error);
+				reply.internalServerError("internal server error");
 			}
 		},
 	);

@@ -12,9 +12,12 @@ const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 		"/speech-balloon",
 		async (request, reply) => {
 			try {
-				const speech = await loadSource<Image>(request.body.image_url).catch(() => reply.badRequest("invalid buffer provided"))
-				const balloon = await loadSource<Image>(request.body.custom_balloon ??
-					"https://i.redd.it/z0nqjst12ih61.jpg").catch(() => reply.badRequest("invalid buffer provided"))
+				const speech = await loadSource<Image>(request.body.image_url).catch(
+					() => reply.badRequest("invalid buffer provided"),
+				);
+				const balloon = await loadSource<Image>(
+					request.body.custom_balloon ?? "https://i.redd.it/z0nqjst12ih61.jpg",
+				).catch(() => reply.badRequest("invalid buffer provided"));
 
 				speech.fit(speech.width, speech.height + (balloon.height - 100) * 2);
 				speech.composite(
@@ -33,8 +36,8 @@ const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 
 				reply.send(result);
 			} catch (error) {
-				console.log(error)
-				reply.internalServerError("internal server error")
+				console.log(error);
+				reply.internalServerError("internal server error");
 			}
 		},
 	);

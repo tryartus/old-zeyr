@@ -6,19 +6,19 @@ import {
 	OptionsRecord,
 	StopFunction,
 	createOption,
-	extendContext
+	extendContext,
 } from "@potoland/core";
 import { ZeyrAPI } from "./api";
 
 export const ZeyrContext = extendContext(() => {
-	return { api: new ZeyrAPI("http://127.0.0.1:3000") }
-})
+	return { api: new ZeyrAPI("http://127.0.0.1:3000") };
+});
 
 export type ZeyrContext<
 	O extends OptionsRecord = {},
 	M extends readonly MiddlewareContext[] = [],
-> = CommandContext<'client', O, M> & {
-	api: ZeyrAPI
+> = CommandContext<"client", O, M> & {
+	api: ZeyrAPI;
 };
 
 const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg))/i;
@@ -32,6 +32,6 @@ export const imageOptions = {
 			if (!imageRegex.test(value))
 				stop(Error("you must enter a valid image url"));
 			ok(value);
-		}
+		},
 	}),
 };

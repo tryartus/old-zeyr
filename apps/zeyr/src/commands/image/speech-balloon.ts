@@ -11,6 +11,6 @@ export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageOptions>) {
 		const { data, time } = await ctx.api.speechBalloon(ctx.options.url);
 
-		return await returnBufferResponse(ctx, time, data)
+		return await returnBufferResponse(ctx, time, data);
 	}
 }
