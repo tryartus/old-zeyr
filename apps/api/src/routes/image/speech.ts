@@ -34,7 +34,7 @@ const speech: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 					"X-Output-Height": speech.height,
 				});
 
-				reply.send(result);
+				return reply.send(result);
 			} catch (error) {
 				console.log(error);
 				reply.internalServerError("internal server error");

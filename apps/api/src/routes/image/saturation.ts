@@ -22,7 +22,7 @@ const saturation: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 					"X-Output-Height": image.height,
 				});
 
-				reply.send(result);
+				return reply.send(result);
 			} catch (error) {
 				console.log(error);
 				reply.internalServerError("internal server error");
