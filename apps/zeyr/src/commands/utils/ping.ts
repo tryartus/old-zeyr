@@ -3,7 +3,7 @@ import { ZeyrContext } from "#lib/options";
 
 @Declare({
 	name: "ping",
-	description: "Gets the bot latency between discord and the.",
+	description: "gets the bot latency",
 })
 export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext) {
@@ -11,9 +11,8 @@ export default class Command extends SubCommand {
 		const apiPing = await this.getAPILatency(ctx);
 
 		return ctx.editResponse({
-			content: `🌏 Discord latency: ${await this.getDiscordLatency(ctx)}ms${
-				apiPing !== 0 ? `\n📡 Zeyr API latency: ${apiPing}ms` : ""
-			}`,
+			content: `🌏 Discord latency: ${await this.getDiscordLatency(ctx)}ms${apiPing !== 0 ? `\n📡 Zeyr API latency: ${apiPing}ms` : ""
+				}`,
 		});
 	}
 

@@ -1,12 +1,19 @@
-import { MessageEmbed } from "@biscuitland/helpers";
+import { LimitedCollection, MessageEmbed } from "@potoland/core";
 import { ZeyrContext } from "#lib/options";
+import { minutes } from "./time";
+
+export const imageCache = new LimitedCollection({
+	expire: minutes(10),
+})
 
 export async function returnBufferResponse(
 	ctx: ZeyrContext,
 	time: string | null,
 	data: ArrayBuffer,
 ) {
-	return ctx.editOrReply(
+	return !time ? ctx.editOrReply({
+		content: "this did not work"
+	}) : ctx.editOrReply(
 		{
 			content: "🖌️ done",
 			embeds: [
@@ -18,8 +25,7 @@ export async function returnBufferResponse(
 					.setFooter({
 						text: `${time}ms to complete`,
 					})
-					.setImage("attachment://result.png")
-					.toJSON(),
+					.setImage("attachment://result.png"),
 			],
 		},
 		[

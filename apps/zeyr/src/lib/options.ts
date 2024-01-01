@@ -35,3 +35,14 @@ export const imageOptions = {
 		},
 	}),
 };
+
+export const queryOptions = {
+	query: createOption({
+		description: "query to search for",
+		required: true,
+		type: ApplicationCommandOptionType.String,
+		value({ value }, ok: OKFunction<string>) {
+			ok(value);
+		},
+	}),
+};
