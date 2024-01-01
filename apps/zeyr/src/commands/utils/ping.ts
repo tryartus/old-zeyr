@@ -11,8 +11,9 @@ export default class Command extends SubCommand {
 		const apiPing = await this.getAPILatency(ctx);
 
 		return ctx.editResponse({
-			content: `🌏 Discord latency: ${await this.getDiscordLatency(ctx)}ms${apiPing !== 0 ? `\n📡 Zeyr API latency: ${apiPing}ms` : ""
-				}`,
+			content: `🌏 Discord latency: ${await this.getDiscordLatency(ctx)}ms${
+				apiPing !== 0 ? `\n📡 Zeyr API latency: ${apiPing}ms` : ""
+			}`,
 		});
 	}
 
