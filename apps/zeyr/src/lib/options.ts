@@ -38,7 +38,7 @@ export const imageOptions = {
 		description: "image file",
 		required: false,
 		type: ApplicationCommandOptionType.Attachment,
-	})
+	}),
 };
 
 export const queryOptions = {

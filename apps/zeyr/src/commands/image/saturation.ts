@@ -33,11 +33,15 @@ export const imageSaturationOptions = {
 @Options(imageSaturationOptions)
 export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageSaturationOptions>) {
-		const url = getMediaOrUseOptions(ctx.interaction.channelId!, ctx.options.attachment?.proxy_url ?? ctx.options.url)
+		const url = getMediaOrUseOptions(
+			ctx.interaction.channelId!,
+			ctx.options.attachment?.proxy_url ?? ctx.options.url,
+		);
 
-		if (isNullOrUndefinedOrEmpty(url)) return ctx.editOrReply({
-			content: "no valid media passed"
-		})
+		if (isNullOrUndefinedOrEmpty(url))
+			return ctx.editOrReply({
+				content: "no valid media passed",
+			});
 
 		const { data, time } = await ctx.api.saturation(
 			url,
