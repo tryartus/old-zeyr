@@ -7,11 +7,12 @@ import {
 	SubCommand,
 	createOption,
 } from "@potoland/core";
+import { isNullOrUndefinedOrEmpty } from "@sapphire/utilities";
+import { getMediaOrUseOptions } from "#lib/cache/media";
 import { returnBufferResponse } from "#lib/common/util";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 export const imageSaturationOptions = {
-	...imageOptions,
 	saturation: createOption({
 		description: "image saturation",
 		required: true,
@@ -22,6 +23,7 @@ export const imageSaturationOptions = {
 			ok(value);
 		},
 	}),
+	...imageOptions,
 };
 
 @Declare({
@@ -31,8 +33,18 @@ export const imageSaturationOptions = {
 @Options(imageSaturationOptions)
 export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageSaturationOptions>) {
+		const url = getMediaOrUseOptions(
+			ctx.interaction.channelId!,
+			ctx.options.attachment?.proxy_url ?? ctx.options.url,
+		);
+
+		if (isNullOrUndefinedOrEmpty(url))
+			return ctx.editOrReply({
+				content: "no valid media passed",
+			});
+
 		const { data, time } = await ctx.api.saturation(
-			ctx.options.url,
+			url,
 			ctx.options.saturation.toString(),
 		);
 

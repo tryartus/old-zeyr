@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   ansi-regex: ^5.0.1
   minimist: ^1.2.8
@@ -108,12 +112,12 @@ importers:
       '@biscuitland/common':
         specifier: ^0.0.9
         version: 0.0.9
-      '@biscuitland/helpers':
-        specifier: ^3.0.14
-        version: 3.0.14
       '@potoland/core':
         specifier: github:potoland/potocuit#master
-        version: github.com/potoland/potocuit/0b44ac36a4dd91257db6ba889cdeb1f491df17ea
+        version: github.com/potoland/potocuit/3015a24ce6ad39ee679375046079ae45fb2439f5
+      '@sapphire/fetch':
+        specifier: ^3.0.1
+        version: 3.0.1
       '@sapphire/ratelimits':
         specifier: ^2.4.8
         version: 2.4.8
@@ -416,23 +420,10 @@ packages:
     dev: true
     optional: true
 
-  /@biscuitland/common@0.0.10:
-    resolution: {integrity: sha512-HQCtZjEgL11EN8DEXu6plzLU0Q+ZUIBwQc223KXQkYU70eHMyKf/mAGdDrbwkn7HE8Rw57gkr5Ks40h8BgixGw==}
-    dependencies:
-      discord-api-types: 0.37.66
-    dev: false
-
   /@biscuitland/common@0.0.9:
     resolution: {integrity: sha512-lpYo0nrtAUHGsD/b7JwPGvbYRp7bQjjCVO01JRxPTWtL2x0UGB89KjkT+DiBd1ZuwABgoRS7+Se4DDVy76WUDQ==}
     dependencies:
       discord-api-types: 0.37.66
-    dev: false
-
-  /@biscuitland/helpers@3.0.14:
-    resolution: {integrity: sha512-H90nZaiP44/QyAUS2gTc5sxbQkIXGkRhCBNKBIUeC9M4QWtwIHYlqveKN5WqoSyRNjR2sO1CpZGULYkooxd0YQ==}
-    dependencies:
-      '@biscuitland/common': 0.0.10
-      ts-mixer: 6.0.3
     dev: false
 
   /@commitlint/cli@17.8.1:
@@ -925,6 +916,11 @@ packages:
   /@sapphire/duration@1.1.1:
     resolution: {integrity: sha512-c6+ZvVEmZ82+G5aZOz8QbTLNY1nN0j/fxykFNULnmoc2WspFO7PbXUDZMeHQoanWbFRC83U2DszhF2Zl5BwjrA==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /@sapphire/fetch@3.0.1:
+    resolution: {integrity: sha512-BNnt4sA2yjQLKy6RBkkR93DCuUYP9wsC5FRdZoHxFPPB25K+C+Tf5pqige+vJHq54Qp8fZQWG2w9JZYOsGWYIg==}
+    engines: {node: '>=v18'}
     dev: false
 
   /@sapphire/ratelimits@2.4.8:
@@ -3983,11 +3979,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/potoland/potocuit/0b44ac36a4dd91257db6ba889cdeb1f491df17ea:
-    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/0b44ac36a4dd91257db6ba889cdeb1f491df17ea}
+  github.com/potoland/potocuit/3015a24ce6ad39ee679375046079ae45fb2439f5:
+    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/3015a24ce6ad39ee679375046079ae45fb2439f5}
     name: '@potoland/core'
     version: 0.0.1
-    prepare: true
     requiresBuild: true
     dependencies:
       '@sapphire/async-queue': 1.5.1
@@ -4014,7 +4009,3 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

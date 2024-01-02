@@ -8,20 +8,12 @@ const opacity: FastifyPluginAsync = async (fastify): Promise<void> => {
 		"/opacity",
 		async (request, reply) => {
 			try {
-				const opacity = Number(request.body.value);
-
 				const image = await loadSource<Image>(request.body.image_url).catch(
 					() => reply.badRequest("invalid buffer provided"),
 				);
-
-				if (!opacity || opacity < 0 || opacity > 1) {
-					reply.badRequest(
-						"Provided opacity value was incorrect. (Please make sure its between 0 and 1, you can use decimals)",
-					);
-				}
+				const opacity = Number(request.body.value);
 
 				image.opacity(opacity);
-				image.resize(image.width - 50, image.height - 50);
 
 				const result = await image.encode();
 
@@ -30,7 +22,7 @@ const opacity: FastifyPluginAsync = async (fastify): Promise<void> => {
 					"X-Output-Height": image.height,
 				});
 
-				return reply.send(result);
+				reply.send(result);
 			} catch (error) {
 				console.log(error);
 				reply.internalServerError("internal server error");

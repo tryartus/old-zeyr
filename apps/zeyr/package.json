@@ -14,8 +14,8 @@
 	"license": "ISC",
 	"dependencies": {
 		"@biscuitland/common": "^0.0.9",
-		"@biscuitland/helpers": "^3.0.14",
 		"@potoland/core": "github:potoland/potocuit#master",
+		"@sapphire/fetch": "^3.0.1",
 		"@sapphire/ratelimits": "^2.4.8",
 		"@sapphire/time-utilities": "^1.7.11",
 		"@sapphire/utilities": "^3.13.0",

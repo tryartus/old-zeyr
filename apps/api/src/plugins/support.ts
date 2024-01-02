@@ -1,6 +1,5 @@
 import fp from "fastify-plugin";
 
-// biome-ignore lint/complexity/noBannedTypes: <explanation>
 export type SupportPluginOptions = {};
 
 // The use of fastify-plugin is required to be able

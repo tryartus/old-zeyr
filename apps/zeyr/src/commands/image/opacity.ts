@@ -7,11 +7,12 @@ import {
 	SubCommand,
 	createOption,
 } from "@potoland/core";
+import { isNullOrUndefinedOrEmpty } from "@sapphire/utilities";
+import { getMediaOrUseOptions } from "#lib/cache/media";
 import { returnBufferResponse } from "#lib/common/util";
 import { ZeyrContext, imageOptions } from "#lib/options";
 
 export const imageOpacityOptions = {
-	...imageOptions,
 	opacity: createOption({
 		description: "image opacity",
 		required: true,
@@ -22,6 +23,7 @@ export const imageOpacityOptions = {
 			ok(value);
 		},
 	}),
+	...imageOptions,
 };
 
 @Declare({
@@ -31,8 +33,18 @@ export const imageOpacityOptions = {
 @Options(imageOpacityOptions)
 export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext<typeof imageOpacityOptions>) {
+		const url = getMediaOrUseOptions(
+			ctx.interaction.channelId!,
+			ctx.options.attachment?.proxy_url ?? ctx.options.url,
+		);
+
+		if (isNullOrUndefinedOrEmpty(url))
+			return ctx.editOrReply({
+				content: "no valid media passed",
+			});
+
 		const { data, time } = await ctx.api.opacity(
-			ctx.options.url,
+			url,
 			ctx.options.opacity.toString(),
 		);
 

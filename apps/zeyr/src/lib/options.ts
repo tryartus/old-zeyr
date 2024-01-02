@@ -21,16 +21,32 @@ export type ZeyrContext<
 	api: ZeyrAPI;
 };
 
-const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg))/i;
+const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg|webp|avif))/i;
 
 export const imageOptions = {
 	url: createOption({
 		description: "image url",
-		required: true,
+		required: false,
 		type: ApplicationCommandOptionType.String,
 		value({ value }, ok: OKFunction<string>, stop: StopFunction) {
-			if (!imageRegex.test(value))
+			if (!imageRegex.test(value!))
 				stop(Error("you must enter a valid image url"));
+			ok(value!);
+		},
+	}),
+	attachment: createOption({
+		description: "image file",
+		required: false,
+		type: ApplicationCommandOptionType.Attachment,
+	}),
+};
+
+export const queryOptions = {
+	query: createOption({
+		description: "query to search for",
+		required: true,
+		type: ApplicationCommandOptionType.String,
+		value({ value }, ok: OKFunction<string>) {
 			ok(value);
 		},
 	}),

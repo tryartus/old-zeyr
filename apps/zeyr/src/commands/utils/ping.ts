@@ -3,7 +3,7 @@ import { ZeyrContext } from "#lib/options";
 
 @Declare({
 	name: "ping",
-	description: "Gets the bot latency between discord and the.",
+	description: "gets the bot latency",
 })
 export default class Command extends SubCommand {
 	async run(ctx: ZeyrContext) {

@@ -6,6 +6,6 @@ export default createEvent({
 		once: true,
 	},
 	run: (_, client) => {
-		client.logger.debug("Zeyr is ready");
+		client.logger.info("Zeyr is ready");
 	},
 });
