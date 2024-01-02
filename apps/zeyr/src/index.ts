@@ -3,7 +3,7 @@ import { ZeyrContext } from "#lib/options";
 import "#lib/setup";
 
 const client = new ZeyrClient({
-	context: ZeyrContext,
+	context: ZeyrContext
 });
 
 void client.run();

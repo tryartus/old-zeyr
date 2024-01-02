@@ -48,8 +48,7 @@ export default class Command extends SubCommand {
 		await ctx.interaction.deferReply();
 
 		const { query } = await fetch<WikipediaResponse>(
-			`https://${
-				ctx.options.language
+			`https://${ctx.options.language
 			}.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|info|pageimages&exsentences=10&exintro=true&explaintext=true&inprop=url&pithumbsize=512&redirects=5&formatversion=2&titles=${encodeURIComponent(
 				ctx.options.query,
 			)}`,
@@ -57,30 +56,16 @@ export default class Command extends SubCommand {
 		);
 
 		if (query?.pages) {
-			const baseEmbed = new MessageEmbed()
-				.setColor(0x08b7fc)
-				.setThumbnail("https://imgur.com/K33Gx4b.png");
-			if (query.pages.length === 1) {
-				const page = query.pages[0] as Wiki;
-				return ctx.editOrReply({
-					embeds: [
-						baseEmbed
-							.setTitle(page.title)
-							.setImage(page.thumbnail.source)
-							.setDescription(page.extract)
-							.toJSON(),
-					],
-				});
-			}
-
 			const pages = query.pages.map((w) =>
-				baseEmbed
+				new MessageEmbed()
 					.setTitle(w.title)
 					.setImage(w.thumbnail.source)
 					.setDescription(w.extract),
 			);
 
-			return ctx.editOrReply(paginated(0, pages));
+			return ctx.editOrReply(paginated(0, pages, new MessageEmbed()
+				.setColor(0x08b7fc)
+				.setThumbnail("https://imgur.com/K33Gx4b.png")));
 		}
 
 		return ctx.editOrReply({

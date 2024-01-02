@@ -114,7 +114,7 @@ importers:
         version: 0.0.9
       '@potoland/core':
         specifier: github:potoland/potocuit#master
-        version: github.com/potoland/potocuit/7f4b721998fa7dccc313699f60bd04b9dc0da918
+        version: github.com/potoland/potocuit/3015a24ce6ad39ee679375046079ae45fb2439f5
       '@sapphire/fetch':
         specifier: ^3.0.1
         version: 3.0.1
@@ -3979,8 +3979,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/potoland/potocuit/7f4b721998fa7dccc313699f60bd04b9dc0da918:
-    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/7f4b721998fa7dccc313699f60bd04b9dc0da918}
+  github.com/potoland/potocuit/3015a24ce6ad39ee679375046079ae45fb2439f5:
+    resolution: {tarball: https://codeload.github.com/potoland/potocuit/tar.gz/3015a24ce6ad39ee679375046079ae45fb2439f5}
     name: '@potoland/core'
     version: 0.0.1
     requiresBuild: true

@@ -26,14 +26,19 @@ const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg|webp|avif))/i;
 export const imageOptions = {
 	url: createOption({
 		description: "image url",
-		required: true,
+		required: false,
 		type: ApplicationCommandOptionType.String,
 		value({ value }, ok: OKFunction<string>, stop: StopFunction) {
-			if (!imageRegex.test(value))
+			if (!imageRegex.test(value!))
 				stop(Error("you must enter a valid image url"));
-			ok(value);
+			ok(value!);
 		},
 	}),
+	attachment: createOption({
+		description: "image file",
+		required: false,
+		type: ApplicationCommandOptionType.Attachment,
+	})
 };
 
 export const queryOptions = {
