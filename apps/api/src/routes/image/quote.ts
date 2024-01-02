@@ -27,7 +27,7 @@ const quote: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 				"https://imgur.com/29uSOP0.png",
 			);
 			const quoteFont = await loadFont(
-				"https://github.com/zeyrbot/assets/raw/main/fonts/IBMPlexSerif-MediumItalic.ttf",
+				"https://github.com/mushbot/assets/raw/main/fonts/IBMPlexSerif-MediumItalic.ttf",
 			);
 
 			const base = new Image(1200, 560);

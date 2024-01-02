@@ -7,7 +7,7 @@ import {
 } from "@potoland/core";
 import { objectEntries } from "@sapphire/utilities";
 import ratelimit from "#lib/middlewares/ratelimit";
-import { ZeyrContext } from "#lib/options";
+import { MushContext } from "#lib/options";
 
 @Declare({
 	name: "image",
@@ -16,21 +16,21 @@ import { ZeyrContext } from "#lib/options";
 @AutoLoad()
 @Middlewares([ratelimit])
 export default class Group extends Command {
-	override onMiddlewaresError(context: ZeyrContext, error: Error) {
+	override onMiddlewaresError(context: MushContext, error: Error) {
 		console.log("middleware", error);
 		context.editOrReply({
 			content: error.message,
 		});
 	}
 
-	override onRunError(context: ZeyrContext, error: unknown) {
+	override onRunError(context: MushContext, error: unknown) {
 		console.log(error);
 		context.editOrReply({
 			content: "image manipulation had an error while executing the command",
 		});
 	}
 
-	override onOptionsError(context: ZeyrContext, error: OnOptionsReturnObject) {
+	override onOptionsError(context: MushContext, error: OnOptionsReturnObject) {
 		context.editOrReply({
 			content: objectEntries(error)
 				.filter(([_, b]) => b.failed)

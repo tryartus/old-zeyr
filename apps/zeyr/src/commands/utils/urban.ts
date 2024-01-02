@@ -2,7 +2,7 @@ import { Declare, MessageEmbed, Options, SubCommand } from "@potoland/core";
 import { BaseClient } from "@potoland/core/dist/client/base";
 import { FetchResultTypes, fetch } from "@sapphire/fetch";
 import { paginated } from "#lib/common/pagination";
-import { ZeyrContext, queryOptions } from "#lib/options";
+import { MushContext, queryOptions } from "#lib/options";
 
 interface UrbanDictionaryResultOk {
 	list: UrbanDictionaryResultOkEntry[];
@@ -28,7 +28,7 @@ interface UrbanDictionaryResultOkEntry {
 })
 @Options(queryOptions)
 export default class Command extends SubCommand {
-	override onRunError(context: ZeyrContext, error: unknown) {
+	override onRunError(context: MushContext, error: unknown) {
 		console.log(context, error);
 	}
 
@@ -36,7 +36,7 @@ export default class Command extends SubCommand {
 		console.log(error);
 	}
 
-	async run(ctx: ZeyrContext<typeof queryOptions>) {
+	async run(ctx: MushContext<typeof queryOptions>) {
 		await ctx.interaction.deferReply();
 
 		const query = await fetch<UrbanDictionaryResultOk>(

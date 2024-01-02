@@ -1,18 +1,18 @@
-# Zeyr
+# Mush
 
 ## 📚 Overview
-Zeyr is a powerful and versatile Discord bot designed to enhance your server experience. With its advanced features and seamless integration, Zeyr is here to make your Discord community thrive! 💪
+Mush is a powerful and versatile Discord bot designed to enhance your server experience. With its advanced features and seamless integration, Mush is here to make your Discord community thrive! 💪
 
 ## 🔧 Installation:
-> Zeyr is made for my own development enviroment, but you can install your own Zeyr instance!
+> Mush is made for my own development enviroment, but you can install your own Mush instance!
 
 1. Clone the repo 
 ```bash
-git clone https://github.com/zeyrbot/zeyr
+git clone https://github.com/Mushbot/Mush
 ```
 2. Enter the directory
 ```bash
-cd zeyr
+cd Mush
 ```
 3. Install dependencies
 ```bash
@@ -25,15 +25,15 @@ pnpm dev
 ```
 
 ## 🤝 Contributing
-- Fork the Zeyr repository and create a new branch for your contributions
+- Fork the Mush repository and create a new branch for your contributions
 - Make your changes and submit a pull request for review
-- Help us improve Zeyr by reporting bugs and suggesting new features
+- Help us improve Mush by reporting bugs and suggesting new features
 
-## ⭐ About Zeyr Prime
-Zeyr Prime is an one-time payment that will be always yours, if you don't want to pay and have the Prime features, since Prime was made because of high prices of hosting, you can always self-host your own instance of Zeyr!
+## ⭐ About Mush Prime
+Mush Prime is an one-time payment that will be always yours, if you don't want to pay and have the Prime features, since Prime was made because of high prices of hosting, you can always self-host your own instance of Mush!
 
-> Anyways by paying you help us to make Zeyr more reachable for everyone 💖
+> Anyways by paying you help us to make Mush more reachable for everyone 💖
 
 ## 🔗 Useful links
-- [Website](https://zeyr.vercel.app)
+- [Website](https://Mush.vercel.app)
 - [Discord server](https://discord.gg)

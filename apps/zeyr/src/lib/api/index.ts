@@ -1,4 +1,4 @@
-export class ZeyrAPI {
+export class MushAPI {
 	baseURL: string;
 	constructor(baseURL: string) {
 		this.baseURL = baseURL;

@@ -1,9 +1,9 @@
-import { ZeyrClient } from "#lib/client";
-import { ZeyrContext } from "#lib/options";
+import { MushClient } from "#lib/client";
+import { MushContext } from "#lib/options";
 import "#lib/setup";
 
-const client = new ZeyrClient({
-	context: ZeyrContext,
+const client = new MushClient({
+	context: MushContext,
 });
 
 void client.run();

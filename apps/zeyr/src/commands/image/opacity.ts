@@ -10,7 +10,7 @@ import {
 import { isNullOrUndefinedOrEmpty } from "@sapphire/utilities";
 import { getMediaOrUseOptions } from "#lib/cache/media";
 import { returnBufferResponse } from "#lib/common/util";
-import { ZeyrContext, imageOptions } from "#lib/options";
+import { MushContext, imageOptions } from "#lib/options";
 
 export const imageOpacityOptions = {
 	opacity: createOption({
@@ -32,7 +32,7 @@ export const imageOpacityOptions = {
 })
 @Options(imageOpacityOptions)
 export default class Command extends SubCommand {
-	async run(ctx: ZeyrContext<typeof imageOpacityOptions>) {
+	async run(ctx: MushContext<typeof imageOpacityOptions>) {
 		const url = getMediaOrUseOptions(
 			ctx.interaction.channelId!,
 			ctx.options.attachment?.proxy_url ?? ctx.options.url,

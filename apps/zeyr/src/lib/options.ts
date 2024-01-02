@@ -8,17 +8,17 @@ import {
 	createOption,
 	extendContext,
 } from "@potoland/core";
-import { ZeyrAPI } from "./api";
+import { MushAPI } from "./api";
 
-export const ZeyrContext = extendContext(() => {
-	return { api: new ZeyrAPI("http://127.0.0.1:3000") };
+export const MushContext = extendContext(() => {
+	return { api: new MushAPI("http://127.0.0.1:3000") };
 });
 
-export type ZeyrContext<
+export type MushContext<
 	O extends OptionsRecord = {},
 	M extends readonly MiddlewareContext[] = [],
 > = CommandContext<"client", O, M> & {
-	api: ZeyrAPI;
+	api: MushAPI;
 };
 
 const imageRegex = /(http[s]?:\/\/.*\.(?:png|jpg|jpeg|webp|avif))/i;

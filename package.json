@@ -1,5 +1,5 @@
 {
-	"name": "zeyr-turborepo",
+	"name": "mush-turborepo",
 	"version": "0.0.0",
 	"private": true,
 	"workspaces": ["apps/*", "packages/*"],
@@ -7,7 +7,7 @@
 		"build": "turbo run build",
 		"dev": "turbo run dev",
 		"postinstall": "husky install .github/husky && pnpm bot prisma:generate",
-		"bot": "pnpm --filter zeyr",
+		"bot": "pnpm --filter mush",
 		"api": "pnpm --filter api",
 		"update:i": "pnpm --recursive update -i",
 		"format": "pnpm dlx @biomejs/biome format . --write",

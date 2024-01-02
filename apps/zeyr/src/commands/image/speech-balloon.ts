@@ -2,7 +2,7 @@ import { Declare, Options, SubCommand } from "@potoland/core";
 import { isNullOrUndefinedOrEmpty } from "@sapphire/utilities";
 import { getMediaOrUseOptions } from "#lib/cache/media";
 import { returnBufferResponse } from "#lib/common/util";
-import { ZeyrContext, imageOptions } from "#lib/options";
+import { MushContext, imageOptions } from "#lib/options";
 
 @Declare({
 	name: "speech-balloon",
@@ -10,7 +10,7 @@ import { ZeyrContext, imageOptions } from "#lib/options";
 })
 @Options(imageOptions)
 export default class Command extends SubCommand {
-	async run(ctx: ZeyrContext<typeof imageOptions>) {
+	async run(ctx: MushContext<typeof imageOptions>) {
 		const url = getMediaOrUseOptions(
 			ctx.interaction.channelId!,
 			ctx.options.attachment?.proxy_url ?? ctx.options.url,
