@@ -48,7 +48,8 @@ export default class Command extends SubCommand {
 		await ctx.interaction.deferReply();
 
 		const { query } = await fetch<WikipediaResponse>(
-			`https://${ctx.options.language
+			`https://${
+				ctx.options.language
 			}.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|info|pageimages&exsentences=10&exintro=true&explaintext=true&inprop=url&pithumbsize=512&redirects=5&formatversion=2&titles=${encodeURIComponent(
 				ctx.options.query,
 			)}`,
